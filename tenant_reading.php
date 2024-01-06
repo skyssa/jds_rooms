@@ -204,7 +204,6 @@ exit();
 														<tr>
 															<th>ID</th>
 															<th>Tenant Name</th>
-															<th>Description</th>
 															<th>Previous Reading</th>
 															<th>Current Reading</th>
 															<th>Consumption</th>
@@ -224,7 +223,6 @@ exit();
                             <tr >
                               <td><?php echo $rows['read_id']; ?></td>
                               <td><?php echo $rows['fullname']; ?></td>
-															<td><?php echo $rows['description']; ?></td>
 															<td><?php echo $rows['prev_reading']; ?></td>
 															<td><?php echo $rows['cur_reading']; ?></td>
 															<td><?php echo $rows['consumption']; ?></td>
@@ -312,11 +310,11 @@ exit();
 											</div>
 
 
-											<p class="mt-3">----------------------------------------------tenant Information--------------------------------------------</p>
+											<p class="mt-3">----------------------------------------------Tenant Information--------------------------------------------</p>
 											
                                          <form action="tenant_billing.php" method="post">
 											<div class="row mt-3">
-                                         <input type="text" name="idtenant" id="idtenant" style="display:none;">
+                                         		<input type="text" name="idtenant" id="idtenant" style="display:none;">
 												<div class="col-md-6 form-group">
 													<label>First Name</label>
 													<input type="text" name="firstname" id="fname"class="form-control" >
@@ -328,14 +326,13 @@ exit();
 												</div>
 
 												<div class="col-md-6 form-group">
-													<label>Bill</label>
-													<select class="form-control" name="bill">
-														<option value="Water bill">Water Bill</option>
+													<label>Electric Bill</label>
+													<input type="text" name="bill" value="Electric bill" placeholder="Electric Bill" class="form-control" disabled>
+													<!-- <select class="form-control" name="bill">
 														<option value="Electric bill">Electric  Bill</option>
-													</select>
-
-
+													</select> -->
 												</div>
+
 												<div class="col-md-6 form-group">
 													<label>Previous Reading</label>
 													<input type="text" class="form-control form-control-user" name="prev_reading" value="<?php echo @$prev_reading; ?>">
@@ -345,11 +342,22 @@ exit();
 													<label>Current Reading</label>
 													<input type="text" class="form-control form-control-user" name="cur_reading" value="<?php echo @$cur_reading; ?>">
 												</div>
+												
 												<div class="col-md-6 form-group" name="consumptions">
-													<label>Total Consumption of Electric/Number of Person per ROOM</label>
-													<input type="number" name="consumptions" class="form-control" >
+													<label>Total Consumption of Electric</label>
+													<input type="text" name="consumptions" class="form-control" placeholder="kwh" disabled>
 												</div>
 												
+												<div class="col-md-6 form-group">
+													<label>Water Bill</label>
+													<input type="text" name="waterbill" class="form-control" value="100">
+												</div>
+
+												<div class="col-md-6 form-group">
+													<label>Person</label>
+													<input type="text" name="pperson"  id="pperson" class="form-control" >
+												</div>
+
 											</div>
                                   
 											<input class="btn btn-success" type="submit">

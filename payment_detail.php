@@ -83,9 +83,10 @@ if (!($_SESSION['username'] == "Admin")) {
     <li class="nav-item dropdown no-arrow">
       <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php
-          $uname = $_SESSION['username'];
-          echo "<b><b>" . $uname . "</b></b>";
-          ?></span>
+                                                                  $uname = $_SESSION['username'];
+                                                                  echo "<b><b>" . $uname . "</b></b>";
+
+                                                                  ?></span>
         <img class="img-profile rounded-circle" src="user.png">
       </a>
       <!-- Dropdown - User Information -->
@@ -152,7 +153,6 @@ if (!($_SESSION['username'] == "Admin")) {
                   $row1 = mysqli_fetch_assoc($result1);
                 } while ($row1);
                 $id = $row['payment_id'];
-                $id2 =$row['tenant_id'];
                 $desc = $row['description'];
                 $sender = $row['sender'];
                 $prev_reading = $row['prev_reading'];
@@ -188,7 +188,7 @@ if (!($_SESSION['username'] == "Admin")) {
                 echo '<td  >' . $status . '</td>';
 
                 if ($status == 'Pending Review') {
-                  echo '<td><button class="btn-sm btn btn-flat btn-primary " id="viewopen">View</button><button class="btn-sm btn btn-flat btn-success m-1"><a href="confirmed_billing.php?id=' . $id . ' &id2=' . $id2 . '" style="color:white;">Confirmed</a></button> <button class="btn-sm btn btn-flat btn-danger m-1"><a href="cancel_billing.php?id=' . $id . '" style="color:white;">Cancel</a></button></td>';
+                  echo '<td><button class="btn-sm btn btn-flat btn-primary " id="viewopen">View</button><button class="btn-sm btn btn-flat btn-success m-1"><a href="confirmed_billing.php?id=' . $id . '" style="color:white;">Confirmed</a></button> <button class="btn-sm btn btn-flat btn-danger m-1"><a href="cancel_billing.php?id=' . $id . '" style="color:white;">Cancel</a></button></td>';
                 } elseif ($status == 'CONFIRMED') {
 
                   echo '<td><button class="btn-sm btn btn-flat btn-primary" id="viewopen">View</button></td>';
@@ -310,7 +310,7 @@ if (!($_SESSION['username'] == "Admin")) {
               <tbody>
                 <?php include 'conn.php';
                 // $query = "SELECT * FROM `tenant`";
-                $query = "SELECT * FROM `tenant` AS TN LEFT JOIN `contract` AS CT ON TN.`tenant_id` = CT.`tenant_id`";
+                $query = "SELECT * FROM `tenant` LEFT JOIN `contract` ON `tenant`.`tenant_id` = `contract`.`tenant_id` LEFT JOIN `tenant_reading_bill` AS TRB  ON `tenant`.`tenant_id` = TRB.tenant_id";
                 $mysqlis = mysqli_query($con, $query);
               
                 while($row = mysqli_fetch_array($mysqlis)){
@@ -377,9 +377,16 @@ if (!($_SESSION['username'] == "Admin")) {
                     <option>Balance Payment</option>
                     <option>Advance Payment</option>
                     <option>Other Charges/Penalties</option>
+                    
+                    
+                    
+
                   </select>
                 </div>
               </div> -->
+
+
+
               <!-- <div class="col-md-4">
                 <div class="form-group">
                   <p style="color:black;">Due Date</p>

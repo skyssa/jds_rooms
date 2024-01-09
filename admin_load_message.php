@@ -17,12 +17,18 @@
                     <div class="chat_ib">
                      <?php      
                      $idf=$rowa['user_id'];
-                     $idsj=$_COOKIE['manager_ids'];
+                    //  $idsj=$_COOKIE['manager_ids'];
+                    $idsj = isset($_COOKIE['manager_ids']) ? $_COOKIE['manager_ids'] : null;
+
                      $sqlsa="select  *,concat(rent_chat_date,' ',rent_chat_time) as  time from rental_chat where rent_tenant_id='$idf'  and  rent_chat_user_id='$idsj'  or rent_tenant_id='$idsj' and   rent_chat_user_id='$idf' order  by  rent_tenant_id  desc limit  1 ";
                      $querysa=mysqli_query($con,$sqlsa);
-                     $rowsa=mysqli_fetch_assoc($querysa);?>
+                     $rowsa=mysqli_fetch_assoc($querysa);
+                     if($rowsa!=''){?>
                      <h5 class="title"><?php echo  $rowa['role']?><span class="rent_chat_date"> <?php echo  $rowsa['rent_chat_time']?> </span></h5>
                      <p><?php echo  $rowsa['rent_chat_message']?></p>
+                     <?php
+                      }
+                      ?>
                    </div>
                  </div>
                </div>
@@ -34,12 +40,18 @@
                 <div class="chat_ib">
                  <?php      
                  $id=$row['tenant_id'];
-                 $ids=$_COOKIE['manager_ids'];
+                //  $ids=$_COOKIE['manager_ids'];
+                 $ids = isset($_COOKIE['manager_ids']) ? $_COOKIE['manager_ids'] : null;
+
                  $sqls="select  *,concat(rent_chat_date,' ',rent_chat_time) as  time from rental_chat where rent_tenant_id='$id'  and  rent_chat_user_id='$ids'  or rent_tenant_id='$ids' and   rent_chat_user_id='$id' order  by  rent_tenant_id  asc limit  1 ";
                  $querys=mysqli_query($con,$sqls);
-                 $rows=mysqli_fetch_assoc($querys);?>
+                 $rows=mysqli_fetch_assoc($querys);
+                 if($rows!=''){?>
                  <h5 class="title"><?php echo  $row['name']?><span class="rent_chat_date"> <?php echo  $rows['rent_chat_time']?> </span></h5>
                  <p><?php echo  $rows['rent_chat_message']?></p>
+                 <?php
+                      }
+                      ?>
                </div>
              </div>
            </div>

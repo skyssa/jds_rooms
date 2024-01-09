@@ -75,14 +75,14 @@
       </li>
 
 
-      <hr class="sidebar-divider">
+      <!-- <hr class="sidebar-divider">
       <li class="nav-item">
         <a class="nav-link" href="form_in.php">
           <i class="fas fa-fw fa-clipboard-list" style="color:black;"></i>
           <span style="color:black;">Room-In Condition Form</span>
         </a>
 
-      </li>
+      </li> -->
 
         <hr class="sidebar-divider">
       <li class="nav-item">

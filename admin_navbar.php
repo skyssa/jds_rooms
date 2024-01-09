@@ -54,10 +54,10 @@
            
           </div>
         </div>
-      </li>
-      <hr class="sidebar-divider">
+      </li><!-- Nav Item - Utilities Collapse Menu -->
+      <!-- <hr class="sidebar-divider">
 
-      <!-- Nav Item - Utilities Collapse Menu -->
+      
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
           <i class="fas fa-clipboard-list"  style="color:black"></i>
@@ -70,7 +70,7 @@
             <a class="collapse-item" href="edit_contract_part.php"  style="color:black">Edit Contract Information</a>
           </div>
         </div>
-      </li>
+      </li> -->
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -89,8 +89,8 @@
             <h6 class="collapse-header"  style="color:black">Details:</h6>
             <a class="collapse-item" href="tenant_detail.php"  style="color:black"> Tenant Information</a>
             <a class="collapse-item" href="tenant_contact.php"  style="color:black">Tenant's Contact</a>
-            <a class="collapse-item" href="admin_tenantIn.php"  style="color:black">Tenant-In Room Condition</a>
-            <a class="collapse-item" href="admin_tenantOut.php">Tenant-Out Room Condition</a>
+            <!-- <a class="collapse-item" href="admin_tenantIn.php"  style="color:black">Tenant-In Room Condition</a>
+            <a class="collapse-item" href="admin_tenantOut.php">Tenant-Out Room Condition</a> -->
             
           </div>
         </div>
@@ -105,23 +105,23 @@
         <div id="collapseFive" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header"  style="color:black">Details:</h6>
-            <a class="collapse-item" href="admin_billing_detail.php"  style="color:black"> Billing Info</a>
+            <!-- <a class="collapse-item" href="admin_billing_detail.php"  style="color:black"> Billing Info</a> -->
             <a class="collapse-item" href="payment_detail.php"  style="color:black">Payment Information</a>
             
            
           </div>
         </div>
-      </li>
-      <hr class="sidebar-divider">
+      </li> <!-- Nav Item - Charts -->
+      <!-- <hr class="sidebar-divider">
 
-      <!-- Nav Item - Charts -->
+     
       <li class="nav-item">
         <a class="nav-link" href="form_out.php">
           <i class="fas fa-fw fa-clipboard-list"  style="color:black"></i>
           <span  style="color:black"> Tenant-Out Room Condition</span>
         </a>
 
-      </li>
+      </li> -->
 
       <hr class="sidebar-divider">
 

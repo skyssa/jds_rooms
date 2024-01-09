@@ -108,23 +108,43 @@ if (!($_SESSION['username'] == "Admin")) {
       <div class="card-body">
         <h1 class="h3 mb-2 text-gray-800" align="center">Payments</h1>
         <div class="table-responsive">
-          <button class="btn  btn-danger btn-flat btn-sm mb-3" id="openmodal">ADD BILLING PAYMENT</button>
+          <!-- <button class="btn  btn-danger btn-flat btn-sm mb-3" id="openmodal">ADD BILLING PAYMENT</button> -->
           <div class="form-group">
             <input type="text" name="search" placeholder="Search" id="myInput" class="form-control" width="100%" cellspacing="0">
           </div>
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="padding:0; margin:0;">
             <thead>
               <tr>
-                <th style="font-size:15px;">Name</th>
+                <!-- <th style="font-size:15px;">Name</th>
                 <th style="font-size:15px;">Description</th>
                 <th style="font-size:15px;">Sender</th>
                 <th style="font-size:15px;">Previous Reading</th>
                 <th style="font-size:15px;">Current Reading</th>
                 <th style="font-size:15px;">Mode Of Payment</th>
-                <th style="font-size:15px;">Amount Paid</th>
-                <th style="font-size:15px;">Date Start</th>
+                <th style="font-size:15px;">Electric Bill</th>
+                <th style="font-size:15px;">Water Bill</th>
+                <th style="font-size:15px;">Room Rent</th>
+                <th style="font-size:15px;">Total AMount</th>
                 <th style="font-size:15px;">Due Date</th>
                 <th style="font-size:15px;">Date</th>
+                <th style="display:none">1</th>
+                <th style="display:none">2</th>
+                <th style="display:none">3</th>
+                <th style="display:none">4</th>
+                <th style="display:none">5</th>
+                <th style="font-size:15px;">Status</th> -->
+                <th style="font-size:15px;">Name</th>
+                <th style="font-size:15px;">Description</th>
+                <th style="font-size:15px;">Previous Reading</th>
+                <th style="font-size:15px;">Current Reading</th>
+                <th style="font-size:15px;">Electric bill</th>
+                <th style="font-size:15px;">Water Bill</th>
+                <th style="font-size:15px;">Room Rent</th>
+                <th style="font-size:15px;">Total</th>
+                <th style="font-size:15px;">Date</th>
+                <th style="font-size:15px;">Due Date</th>
+                <th style="font-size:15px;">Mode Of Payment</th>
+                <th style="font-size:15px;">Sender</th>
                 <th style="display:none">1</th>
                 <th style="display:none">2</th>
                 <th style="display:none">3</th>
@@ -153,6 +173,7 @@ if (!($_SESSION['username'] == "Admin")) {
                   $row1 = mysqli_fetch_assoc($result1);
                 } while ($row1);
                 $id = $row['payment_id'];
+                $id2 = $row['tenant_id'];
                 $desc = $row['description'];
                 $sender = $row['sender'];
                 $prev_reading = $row['prev_reading'];
@@ -166,36 +187,48 @@ if (!($_SESSION['username'] == "Admin")) {
                 $ref = $row['ref_no'];
                 $pic = $row['picture'];
                 $date_send = $row['date_send'];
-
+                $electric = $row['pay_from'];
+                $water = $row['pay_to'];
                 $confirmed = $row['confirmed_date'];
-                echo '<tr>';
-                echo '<td>' . $fname . ' ' . $lname . '<br/>(' . $uname . ')</td>';
+                $total = $row['consumption'];
+                $date=$row['date'];
+											$timestamp = strtotime($date);
 
-                echo '<td>' . $desc . '</td>';
-                echo '<td>' . $sender . '</td>';
-                echo '<td>' . $prev_reading . '</td>';
-                echo '<td>' . $cur_reading . '</td>';
-                echo '<td>' . $ref . '</td>';
-                echo '<td>' . number_format($amount) . '</td>';
-                echo '<td>' . $from . '</td>';
-                echo '<td>' . $to . '</td>';
-                echo '<td>' . $date . '</td>';
+											// Add 3 days to the timestamp
+											$newTimestamp = strtotime('+3 days', $timestamp);
 
+											// Convert the new timestamp back to a human-readable date
+											$newDate = date("Y-m-d", $newTimestamp);
+											$Date=date("Y-m-d", $timestamp);
+                      
+                    echo '<tr>';
+                    echo '<td>' . $fname . ' ' . $lname . '<br/>(' . $uname . ')</td>';
+                    echo '<td>' . $desc . '</td>';
+                    echo '<td>' . $prev_reading . '</td>';
+                    echo '<td>' . $cur_reading . '</td>';
+                    echo '<td>' . $electric . '</td>';
+                    echo '<td>' . $water . '</td>';
+                    echo '<td>' . number_format($amount) . '</td>';
+                    echo '<td>' . $total . '</td>';
+                    echo '<td>' . $Date . '</td>';
+                    echo '<td>' . $newDate . '</td>';
+                    echo '<td>' . $ref . '</td>';
+                    echo '<td>' . $sender . '</td>';
+                    echo '<td style="display:none" >' . $pic . '</td>';
+                    echo '<td style="display:none" >' . $date_send . '</td>';
+                    echo '<td style="display:none" >' . $confirmed . '</td>';
+                    echo '<td  >' . $status . '</td>';
 
-                echo '<td style="display:none" >' . $pic . '</td>';
-                echo '<td style="display:none" >' . $date_send . '</td>';
-                echo '<td style="display:none" >' . $confirmed . '</td>';
-                echo '<td  >' . $status . '</td>';
+                    if ($status == 'Pending Review') {
+                      echo '<td><button class="btn-sm btn btn-flat btn-primary " id="viewopen">View</button><button class="btn-sm btn btn-flat btn-success m-1"><a href="confirmed_billing.php?id=' . $id . '&id2=' . $id2 . '" style="color:white;">Confirmed</a></button> <button class="btn-sm btn btn-flat btn-danger m-1"><a href="cancel_billing.php?id=' . $id . '" style="color:white;">Cancel</a></button></td>';
+                    } elseif ($status == 'CONFIRMED') {
 
-                if ($status == 'Pending Review') {
-                  echo '<td><button class="btn-sm btn btn-flat btn-primary " id="viewopen">View</button><button class="btn-sm btn btn-flat btn-success m-1"><a href="confirmed_billing.php?id=' . $id . '" style="color:white;">Confirmed</a></button> <button class="btn-sm btn btn-flat btn-danger m-1"><a href="cancel_billing.php?id=' . $id . '" style="color:white;">Cancel</a></button></td>';
-                } elseif ($status == 'CONFIRMED') {
+                      echo '<td><button class="btn-sm btn btn-flat btn-primary" id="viewopen">View</button></td>';
+                    } else {
+                    }
 
-                  echo '<td><button class="btn-sm btn btn-flat btn-primary" id="viewopen">View</button></td>';
-                } else {
-                }
-
-                echo '</tr>';
+                    echo '</tr>';
+              
                 $row = mysqli_fetch_assoc($result);
               } while ($row);
               ?>
@@ -299,7 +332,7 @@ if (!($_SESSION['username'] == "Admin")) {
                   <th>ID</th>
                   <th>First name</th>
                   <th>Last name</th>
-                  <th>Room</th>
+                  <th>Date</th>
                   <th>Room rent</th>
                   <th>Previous Reading</th>
                   <th>Current Reading</th>
@@ -312,8 +345,8 @@ if (!($_SESSION['username'] == "Admin")) {
                 // $query = "SELECT * FROM `tenant`";
                 $query = "SELECT * FROM `tenant` LEFT JOIN `contract` ON `tenant`.`tenant_id` = `contract`.`tenant_id` LEFT JOIN `tenant_reading_bill` AS TRB  ON `tenant`.`tenant_id` = TRB.tenant_id";
                 $mysqlis = mysqli_query($con, $query);
-              
-                while($row = mysqli_fetch_array($mysqlis)){
+
+                while ($row = mysqli_fetch_array($mysqlis)) {
                 ?>
                   <tr class="content">
                     <td class="title"><?php echo $row['tenant_id']; ?></td>
@@ -325,15 +358,15 @@ if (!($_SESSION['username'] == "Admin")) {
                     <td class="title"><?php echo $row['cur_reading']; ?></td>
                     <td class="title"><?php echo $row['water_bill']; ?></td>
                     <td><button class="btn  btn-success" id="adds">add</button></td>
-                  </tr>                  
-                <?php 
-                 
-                } 
-                
+                  </tr>
+                <?php
+
+                }
+
                 ?>
               </tbody>
             </table>
-          </div>  
+          </div>
           <form action="billing_system.php" method="post">
             <div class="row">
               <div class="col-md-4">
@@ -341,31 +374,31 @@ if (!($_SESSION['username'] == "Admin")) {
                 <input type="text" id="roomget" name="roomget" style="display:none;">
                 <div class="form-group">
                   <p style="color:black;">First Name</p>
-                  <input type="text" id="nameko" name="nameko" class="form-control" disabled required value="<?php echo @$nameko;?>">
+                  <input type="text" id="nameko" name="nameko" class="form-control" disabled required value="<?php echo @$nameko; ?>">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <p style="color:black;">Last Name</p>
-                  <input type="text" name="lastnm" id="lastnm" class="form-control" disabled required value="<?php echo @$lastnm;?>">
+                  <input type="text" name="lastnm" id="lastnm" class="form-control" disabled required value="<?php echo @$lastnm; ?>">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <p style="color:black;">Month</p>
-                  <input type="text" name="month" id="month" class="form-control" disabled required value="<?php echo @$month;?>">
+                  <input type="text" name="month" id="month" class="form-control" disabled required value="<?php echo @$month; ?>">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <p style="color:black;">Monthly Bill</p>
-                  <input type="text" name="rent" id="rent" class="form-control" disabled required value="<?php echo @$rent;?>">
+                  <input type="text" name="rent" id="rent" class="form-control" disabled required value="<?php echo @$rent; ?>">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <p style="color:black;">Electric Bill</p>
-                  <input type="text" name="eletric" id="eletric" class="form-control" disabled required value="<?php echo @$eletric;?>">
+                  <input type="text" name="eletric" id="eletric" class="form-control" disabled required value="<?php echo @$eletric; ?>">
                 </div>
               </div>
               <!-- <div class="col-md-4">
@@ -377,16 +410,9 @@ if (!($_SESSION['username'] == "Admin")) {
                     <option>Balance Payment</option>
                     <option>Advance Payment</option>
                     <option>Other Charges/Penalties</option>
-                    
-                    
-                    
-
                   </select>
                 </div>
               </div> -->
-
-
-
               <!-- <div class="col-md-4">
                 <div class="form-group">
                   <p style="color:black;">Due Date</p>
@@ -397,7 +423,7 @@ if (!($_SESSION['username'] == "Admin")) {
               <div class="col-md-4" id="billc">
                 <div class="form-group">
                   <p style="color:black;" id="ratec">Previous Reading</p>
-                  <input type="number" name="prev_reading" id="prev_reading" class="form-control" disabled oninput="myFunction()" value="<?php echo @$prev_reading;?>">
+                  <input type="number" name="prev_reading" id="prev_reading" class="form-control" disabled oninput="myFunction()" value="<?php echo @$prev_reading; ?>">
                 </div>
               </div>
 
@@ -405,13 +431,13 @@ if (!($_SESSION['username'] == "Admin")) {
               <div class="col-md-4" id="billd">
                 <div class="form-group">
                   <label for="inputGST" class="form-label" id="rated">Current Reading</label>
-                  <input type="number" class="form-control" name="cur_reading" id="cur_reading" disabled oninput="myFunction()" value="<?php echo @$cur_reading;?>">
+                  <input type="number" class="form-control" name="cur_reading" id="cur_reading" disabled oninput="myFunction()" value="<?php echo @$cur_reading; ?>">
                 </div>
               </div>
               <div class="col-md-4" id="billa">
                 <div class="form-group">
                   <p style="color:black;" id="ratea">Kwh</p>
-                  <input type="number" name="inputProductPrice" id="inputProductPrice" class="form-control" disabled oninput="myFunction()" value="<?php echo @$inputProductPrice;?>">
+                  <input type="number" name="inputProductPrice" id="inputProductPrice" class="form-control" disabled oninput="myFunction()" value="<?php echo @$inputProductPrice; ?>">
                 </div>
               </div>
 
@@ -419,18 +445,39 @@ if (!($_SESSION['username'] == "Admin")) {
               <div class="col-md-4" id="billb">
                 <div class="form-group">
                   <label for="inputGST" class="form-label" id="rateb">Per kwh</label>
-                  <input type="number" class="form-control" name="inputGST" id="inputGST" value="18" disabled oninput="myFunction()" value="<?php echo @$inputGST;?>">
+                  <input type="number" class="form-control" name="inputGST" id="inputGST" value="18" disabled oninput="myFunction()" value="<?php echo @$inputGST; ?>">
                 </div>
               </div>
-              
+
 
               <div class="col-md-4">
                 <div class="form-group">
                   <p style="color:black;">Water Bill</p>
-                  <input type="text" name="water" id="water" class="form-control" disabled value="<?php echo @$water;?>">
+                  <input type="text" name="water" id="water" class="form-control" disabled value="<?php echo @$water; ?>">
                 </div>
               </div>
-              
+              <!-- <div class="col-md-4">
+                <div class="form-group">
+                  <p style="color:black;">Room Rent</p>
+                  <input type="text" name="Rent" id="Rent" class="form-control" disabled value="<?php echo @$rent; ?>">
+                </div>
+              </div>
+               -->
+              <!-- <?php
+                    $total = 0;
+                    if (isset($rent)) {
+                      $total += (float)$rent;
+                    }
+                    if (isset($eletric)) {
+                      $total += (float)$eletric;
+                    }
+                    if (isset($water)) {
+                      $total += (float)$water;
+                    }
+
+                    echo "Total Monthly Bills: P" . number_format($total, 2);
+                    ?> -->
+
 
               <!-- <div class="col-md-4">
                 <div class="form-group">
@@ -578,7 +625,6 @@ if (!($_SESSION['username'] == "Admin")) {
     document.getElementById("inputProductPrice").value = kwhValue;
     document.getElementById("eletric").value = totalReading;
   }
-
 </script>
 
 
@@ -644,6 +690,7 @@ if (!($_SESSION['username'] == "Admin")) {
       $('#prev_reading').val(tr.eq(5).text());
       $('#cur_reading').val(tr.eq(6).text());
       $('#water').val(tr.eq(7).text());
+
 
 
       var prevReadingValue = parseInt($('#prev_reading').val());

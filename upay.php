@@ -104,14 +104,19 @@ if(!$_SESSION['username']){
                           <tr>
                             <th style="display:none">Description</th>
                             <th style="font-size:15px;">Description</th>
-                            <th style="font-size:15px;">Consumption</th>
+                            
                             <th style="font-size:15px;">Sender</th>
                             <th style="font-size:15px;">Previous Reading</th>
                             <th style="font-size:15px;">Current Reading</th>
-                            <th style="font-size:15px;">Mode Of Payment</th>
-                            <th style="font-size:15px;">Amount</th>
-                            <th style="font-size:15px;">Payment For</th>
+                            <th style="font-size:15px;">Electric Bill</th>
+                            <th style="font-size:15px;">Water Bill</th>   
+                            
+                            <th style="font-size:15px;">Monthly rent</th>
+                            <th style="font-size:15px;">Total</th>
                                <th style="display:none">Description</th>
+                               <th style="font-size:15px;">Mode Of Payment</th>
+                               <th style="font-size:15px;">DATE</th>
+                                  
                             <th style="font-size:15px;">Status</th>
                                   <th style="display:none">Description</th>
                             <th style="font-size:15px;">Action</th>
@@ -127,7 +132,7 @@ if(!$_SESSION['username']){
                             $id = $row['tenant_id'];
                             $row = mysqli_fetch_assoc($result1);
                           }while ($row);
-
+                          
                           $sql = "SELECT * FROM payment WHERE tenant_id = '$id'";
                           $totalAmountQuery = "SELECT SUM(amount) AS total_amount FROM payment WHERE tenant_id = '$id' AND status = 'CONFIRMED'";
                           $totalAmountResult = mysqli_query($con, $totalAmountQuery);
@@ -152,48 +157,64 @@ if(!$_SESSION['username']){
                                 $con = $row['consumption'];
                               $desc= $row['description'];
                               $ref= $row['ref_no'];
-                              $from = $row['pay_from'];
+                              $electric = $row['pay_from'];
                               $sender = $row['sender'];
-                              $to = $row['pay_to'];
+                              $water = $row['pay_to'];
                               $status = $row['status'];
-                               $pic = $row['picture'];
-                                         $confirmed = $row['confirmed_date'];
-                              echo '<tr>';
-                         
-                              echo '<td style="display:none;">'.$id.'</td>';
-                              echo '<td style="font-size:15px;">'.$desc.'</td>';
-                              echo '<td style="font-size:15px;">'.$con.'</td>';
-                              echo '<td style="font-size:15px;">'.$sender.'</td>';
-                              echo '<td style="font-size:15px;">'.$prev_reading.'</td>';
-                              echo '<td style="font-size:15px;">'.$cur_reading.'</td>';
-                              echo '<td style="font-size:15px;">'.$ref.'</td>';
-                              echo '<td style="font-size:15px;">'.$amount.'</td>';
-                              echo '<td style="font-size:15px;">'.$from.' - '.$to.'</td>';
-                              echo '<td style="display:none;">'.$pic.'</td>';
-                                        echo '<td style="display:none;">'.$confirmed.'</td>';
-                              if($status=='Pending'){
-                                  echo '<td style="font-size:15px;color:red;">'.$status.'</td>';
+                              $pic = $row['picture'];
+                              $confirmed = $row['confirmed_date'];
+                              $currentDateTime = date('Y-m-d');
+                              $date=$row['date'];
+											$timestamp = strtotime($date);
 
-                              }elseif ($status=='Pending Review') {
-                              echo '<td style="font-size:15px;color:red;">'.$status.'</td>';
-                              }elseif ($status=='CONFIRMED') {
-                                 echo '<td style="font-size:15px;color:green;">'.$status.'</td>';
-                              }else{
+											// Add 3 days to the timestamp
+											$newTimestamp = strtotime('+3 days', $timestamp);
 
-                              }
-                                if($status=='CONFIRMED'){
-                            
-                              echo '<td style="font-size:15px;"><button class="btn btn-success btn-sm btn-flat" id="viewopen" data-id="'.$id.'">View</button></td>';
+											// Convert the new timestamp back to a human-readable date
+											$newDate = date("Y-m-d", $newTimestamp);
+                      $Date=date("Y-m-d", $timestamp);
+                               
+                                echo '<tr>';
+                          
+                                echo '<td style="display:none;">'.$id.'</td>';
+                                echo '<td style="font-size:15px;">'.$desc.'</td>';
+                                
+                                echo '<td style="font-size:15px;">'.$sender.'</td>';
+                                echo '<td style="font-size:15px;">'.$prev_reading.'</td>';
+                                echo '<td style="font-size:15px;">'.$cur_reading.'</td>';
+                                echo '<td style="font-size:15px;">'.$electric.'</td>';
+                                echo '<td style="font-size:15px;">'.$water.'</td>';
+                                
+                                echo '<td style="font-size:15px;">'.$amount.'</td>';
+                                echo '<td style="font-size:15px;">'.$con.'</td>';
+                                echo '<td style="font-size:15px;">'.$ref.'</td>';
+                                echo '<td style="font-size:15px;">'.$Date.'</td>';
+                                echo '<td style="display:none;">'.$pic.'</td>';
+                                          echo '<td style="display:none;">'.$confirmed.'</td>';
+                                if($status=='Pending'){
+                                    echo '<td style="font-size:15px;color:red;">'.$status.'</td>';
 
-                                }elseif($status=='Pending'){
-                                       echo '<td style="font-size:15px;"><button class="btn btn-warning btn-sm btn-flat" id="openmodal" data-id="'.$id.'">Update Payment</button></td>';
+                                }elseif ($status=='Pending Review') {
+                                echo '<td style="font-size:15px;color:red;">'.$status.'</td>';
+                                }elseif ($status=='CONFIRMED') {
+                                  echo '<td style="font-size:15px;color:green;">'.$status.'</td>';
                                 }else{
 
-
                                 }
+                                  if($status=='CONFIRMED'){
                               
+                                echo '<td style="font-size:15px;"><button class="btn btn-success btn-sm btn-flat" id="viewopen" data-id="'.$id.'">View</button></td>';
 
-                              echo '</tr>';
+                                  }elseif($status=='Pending'){
+                                        echo '<td style="font-size:15px;"><button class="btn btn-warning btn-sm btn-flat" id="openmodal" data-id="'.$id.'">Update Payment</button></td>';
+                                  }else{
+
+
+                                  }
+                                
+                               
+                                echo '</tr>';
+                              
                               $total += $amount;
                               $row3 = mysqli_fetch_assoc($result3);
                             } while ($row3);

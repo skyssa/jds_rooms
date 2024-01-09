@@ -165,32 +165,33 @@ if(!$_SESSION['username']){
                               $confirmed = $row['confirmed_date'];
                               $currentDateTime = date('Y-m-d');
                               $date=$row['date'];
-											$timestamp = strtotime($date);
+                              $timestamp = strtotime($date);
 
-											// Add 3 days to the timestamp
-											$newTimestamp = strtotime('+3 days', $timestamp);
+                              // Add 3 days to the timestamp
+                              $newTimestamp = strtotime('+3 days', $timestamp);
 
-											// Convert the new timestamp back to a human-readable date
-											$newDate = date("Y-m-d", $newTimestamp);
-                      $Date=date("Y-m-d", $timestamp);
-                               
-                                echo '<tr>';
+                              // Convert the new timestamp back to a human-readable date
+                              $newDate = date("Y-m-d", $newTimestamp);
+                              
+
+                              $Date=date("Y-m-d", $timestamp);
+
+                              
                           
+                                echo '<tr>';
                                 echo '<td style="display:none;">'.$id.'</td>';
                                 echo '<td style="font-size:15px;">'.$desc.'</td>';
-                                
                                 echo '<td style="font-size:15px;">'.$sender.'</td>';
                                 echo '<td style="font-size:15px;">'.$prev_reading.'</td>';
                                 echo '<td style="font-size:15px;">'.$cur_reading.'</td>';
                                 echo '<td style="font-size:15px;">'.$electric.'</td>';
                                 echo '<td style="font-size:15px;">'.$water.'</td>';
-                                
                                 echo '<td style="font-size:15px;">'.$amount.'</td>';
                                 echo '<td style="font-size:15px;">'.$con.'</td>';
                                 echo '<td style="font-size:15px;">'.$ref.'</td>';
                                 echo '<td style="font-size:15px;">'.$Date.'</td>';
                                 echo '<td style="display:none;">'.$pic.'</td>';
-                                          echo '<td style="display:none;">'.$confirmed.'</td>';
+                                echo '<td style="display:none;">'.$confirmed.'</td>';
                                 if($status=='Pending'){
                                     echo '<td style="font-size:15px;color:red;">'.$status.'</td>';
 
@@ -212,9 +213,10 @@ if(!$_SESSION['username']){
 
                                   }
                                 
-                               
+                                
                                 echo '</tr>';
-                              
+                                
+                               
                               $total += $amount;
                               $row3 = mysqli_fetch_assoc($result3);
                             } while ($row3);

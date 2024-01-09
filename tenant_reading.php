@@ -326,15 +326,9 @@ exit();
 												</div>
 
 												<div class="col-md-6 form-group">
-<<<<<<< HEAD
-													<label>Bill</label>
-													<select class="form-control" name="bill">
-												
-=======
 													<label>Electric Bill</label>
 													<input type="text" name="bill" value="Electric bill" placeholder="Electric Bill" class="form-control" disabled>
 													<!-- <select class="form-control" name="bill">
->>>>>>> 5ecf7733b80d379a4383d987623e894e1f247620
 														<option value="Electric bill">Electric  Bill</option>
 													</select> -->
 												</div>
@@ -350,23 +344,8 @@ exit();
 												</div>
 												
 												<div class="col-md-6 form-group" name="consumptions">
-<<<<<<< HEAD
-													<label>Total Consumption of Electric/Number of Person per ROOM</label>
-													<input type="number" name="consumptions" class="form-control" >
-													
-												</div>
-												<div class="col-md-6 form-group">
-													<label>EleBill</label>
-													<select class="form-control" name="bill">
-														<option value="Water bill">Water Bill</option>
-													
-													</select>
-
-
-=======
 													<label>Total Consumption of Electric</label>
 													<input type="text" name="consumptions" class="form-control" placeholder="kwh" disabled>
->>>>>>> 5ecf7733b80d379a4383d987623e894e1f247620
 												</div>
 												
 												<div class="col-md-6 form-group">

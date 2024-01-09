@@ -330,7 +330,7 @@ exit();
 												<div class="col-md-6 form-group">
 													<label>Bill</label>
 													<select class="form-control" name="bill">
-														<option value="Water bill">Water Bill</option>
+												
 														<option value="Electric bill">Electric  Bill</option>
 													</select>
 
@@ -348,6 +348,16 @@ exit();
 												<div class="col-md-6 form-group" name="consumptions">
 													<label>Total Consumption of Electric/Number of Person per ROOM</label>
 													<input type="number" name="consumptions" class="form-control" >
+													
+												</div>
+												<div class="col-md-6 form-group">
+													<label>EleBill</label>
+													<select class="form-control" name="bill">
+														<option value="Water bill">Water Bill</option>
+													
+													</select>
+
+
 												</div>
 												
 											</div>

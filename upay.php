@@ -104,7 +104,7 @@ if(!$_SESSION['username']){
                           <tr>
                             <th style="display:none">Description</th>
                             <th style="font-size:15px;">Description</th>
-                             <th style="font-size:15px;">Consumption</th>
+                            <th style="font-size:15px;">Consumption</th>
                             <th style="font-size:15px;">Sender</th>
                             <th style="font-size:15px;">Previous Reading</th>
                             <th style="font-size:15px;">Current Reading</th>
@@ -130,12 +130,11 @@ if(!$_SESSION['username']){
 
                           $sql = "SELECT * FROM payment WHERE tenant_id = '$id'";
                           $totalAmountQuery = "SELECT SUM(amount) AS total_amount FROM payment WHERE tenant_id = '$id' AND status = 'CONFIRMED'";
-$totalAmountResult = mysqli_query($con, $totalAmountQuery);
-$totalAmountRow = mysqli_fetch_assoc($totalAmountResult);
-$totalAmount = $totalAmountRow['total_amount'];
-
-// Display the total amount
-echo '<p>Total Amount: ' . $totalAmount . '</p>';
+                          $totalAmountResult = mysqli_query($con, $totalAmountQuery);
+                          $totalAmountRow = mysqli_fetch_assoc($totalAmountResult);
+                          $totalAmount = $totalAmountRow['total_amount'];
+                          // Display the total amount
+                          echo '<p>Total Amount: ' . $totalAmount . '</p>';
                           $sql3 = "SELECT * FROM contract WHERE tenant_id = '$id' AND status = 'Active'";
                           $result = mysqli_query($con, $sql);
                           $result3 = mysqli_query($con, $sql3);

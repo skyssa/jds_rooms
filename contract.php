@@ -96,21 +96,30 @@ if (!$_SESSION['username']) {
         <?php
         include 'conn.php';
         $ids = $_COOKIE['manager_id'];
-
+        $stats="CONFIRMED";
         $update = "select * from  contract where  tenant_id='$ids'";
         $query = mysqli_query($con, $update);
         $querys = mysqli_fetch_assoc($query);
+        $stat="Pending";
 
 
 
         if (mysqli_num_rows($query) > 0) {
+          if($querys['status']===$stats){
         ?>
 
-          <p style="font-size:30px;color:green;text-align:center"><br><br><br><br>SUCCESSFULLY YOU HAVE A CONTRACT AND ROOM NOW!<br><br>THANK YOU!</p>
+          <p style="font-size:30px;color:green;text-align:center"><br><br><br><br>YOU HAVE A ROOM NOW!<br><br>THANK YOU!</p>
 
         <?php
-        } else {
-
+          }elseif($querys['status']===$stat){
+            ?>
+    
+              <p style="font-size:30px;color:green;text-align:center"><br><br><br><br>YOUR PAYMENT IS PENDING AT THE MOMENT<br><br>PLEASE WAIT FOR CONFIRMATION!</p>
+    
+            <?php
+              }
+        } 
+        else{
         ?>
 
 
@@ -158,41 +167,11 @@ if (!$_SESSION['username']) {
                       </div>
                       <input type="text" name="room" id="room" style="display:none;">
                       <div class="col-md-3">
-                        <div class="form-group ">
-                          Date Start<br />
+                        <div class="form-group">
+                          Date Start<br/>
                           <input type="date" name="date" id="date" class="form-control" style="margin-left:3%;">
                         </div>
                       </div>
-                      <!-- <div class="col-md-3">
-                        <div class="form-group ">
-                          Month Start<br />
-                          <select class="custom-select" name="duration" id="durations">
-                            <option value="january">January</option>
-                            <option value="February">February</option>
-                            <option value="March">March</option>
-                            <option value="April">April</option>
-                            <option value="May">May</option>
-                            <option value="June">June</option>
-                            <option value="July">July</option>
-                            <option value="August">August</option>
-                            <option value="September">September</option>
-                            <option value="October">October</option>
-                            <option value="November">November</option>
-                            <option value="December">December</option>
-                          </select>
-                        </div>
-                      </div> -->
-
-                      <!-- <div class="col-md-3">
-                        <div class="form-group ">
-                          Payment Terms:<br />
-                          <select class="custom-select" name="term" id="terms">
-                            <option value="1" id="1">1 term</option>
-                            <option value="2" id="2">2 terms</option>
-                            <option value="4" id="4">4 terms</option>
-                          </select>
-                        </div>
-                      </div> -->
                       <hr>
                       <p style="margin-left:10%;">Please read the contract <span style="color:red;">CAREFULLY</span> and check "I agree" if you agree with the TERMS AND CONDITIONS stated.</p><br />
                       <div class="form-group " style="margin-left:4%;">
@@ -206,11 +185,30 @@ if (!$_SESSION['username']) {
 
                     </div>
                     <div class="form-group">
-                      <input type="submit" class="btn btn-primary form-control" onclick="showConfirmation()">
+                      <input type="submit" class="btn btn-primary form-control" id="showconfirm" onclick="showConfirmation()">
                     </div>
 
 
                   </form>
+                  <!-- Add the following HTML structure for the modal -->
+                  <div class="modal fade" id="showconfirm" tabindex="-1" role="dialog" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="confirmationModalLabel">Contract Signed!</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Thank you for agreeing to the TERMS AND CONDITIONS. Your contract has been successfully signed.</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                 </div>
               </div>
@@ -287,15 +285,16 @@ if (!$_SESSION['username']) {
 
 <script>
   function showConfirmation() {
+    
     Swal.fire({
-      title: 'Contract Signed!',
-      text: 'Thank you for agreeing to the TERMS AND CONDITIONS. Your contract has been successfully signed.',
+      title: 'Request Pending!',
+      text: 'Thank you for agreeing to the TERMS AND CONDITIONS. Make an Advance Payment First before proceeding.',
       icon: 'success',
       showConfirmButton: false,
-      timer: 5000,
+      timer: 15000,
     }).then(() => {
       document.forms[0].submit();
-      location.href = 'home.php';
+      location.href = 'upay.php';
     });
   }
 </script>

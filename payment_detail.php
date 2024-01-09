@@ -301,13 +301,20 @@ if (!($_SESSION['username'] == "Admin")) {
                   <th>Last name</th>
                   <th>Room</th>
                   <th>Room rent</th>
+                  <th>Previous Reading</th>
+                  <th>Current Reading</th>
+                  <th>Water Bill</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <?php include 'conn.php';
                 // $query = "SELECT * FROM `tenant`";
+<<<<<<< HEAD
                 $query = "SELECT * FROM `tenant` AS TN LEFT JOIN `contract` AS CT ON TN.`tenant_id` = CT.`tenant_id`";
+=======
+                $query = "SELECT * FROM `tenant` LEFT JOIN `contract` ON `tenant`.`tenant_id` = `contract`.`tenant_id` LEFT JOIN `tenant_reading_bill` AS TRB  ON `tenant`.`tenant_id` = TRB.tenant_id";
+>>>>>>> 5ecf7733b80d379a4383d987623e894e1f247620
                 $mysqlis = mysqli_query($con, $query);
               
                 while($row = mysqli_fetch_array($mysqlis)){
@@ -318,6 +325,9 @@ if (!($_SESSION['username'] == "Admin")) {
                     <td class="title"><?php echo $row['lname']; ?></td>
                     <td class="title"><?php echo $row['start_day']; ?></td>
                     <td class="title"><?php echo $row['rent_per_term']; ?></td>
+                    <td class="title"><?php echo $row['prev_reading']; ?></td>
+                    <td class="title"><?php echo $row['cur_reading']; ?></td>
+                    <td class="title"><?php echo $row['water_bill']; ?></td>
                     <td><button class="btn  btn-success" id="adds">add</button></td>
                   </tr>                  
                 <?php 
@@ -327,7 +337,7 @@ if (!($_SESSION['username'] == "Admin")) {
                 ?>
               </tbody>
             </table>
-          </div>
+          </div>  
           <form action="billing_system.php" method="post">
             <div class="row">
               <div class="col-md-4">
@@ -335,31 +345,31 @@ if (!($_SESSION['username'] == "Admin")) {
                 <input type="text" id="roomget" name="roomget" style="display:none;">
                 <div class="form-group">
                   <p style="color:black;">First Name</p>
-                  <input type="text" id="nameko" name="nameko" class="form-control" disabled required>
+                  <input type="text" id="nameko" name="nameko" class="form-control" disabled required value="<?php echo @$nameko;?>">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <p style="color:black;">Last Name</p>
-                  <input type="text" name="lastnm" id="lastnm" class="form-control" disabled required>
+                  <input type="text" name="lastnm" id="lastnm" class="form-control" disabled required value="<?php echo @$lastnm;?>">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <p style="color:black;">Month</p>
-                  <input type="text" name="month" id="month" class="form-control" disabled required>
+                  <input type="text" name="month" id="month" class="form-control" disabled required value="<?php echo @$month;?>">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <p style="color:black;">Monthly Bill</p>
-                  <input type="text" name="rent" id="rent" class="form-control" disabled required>
+                  <input type="text" name="rent" id="rent" class="form-control" disabled required value="<?php echo @$rent;?>">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <p style="color:black;">Electric Bill</p>
-                  <input type="text" name="eletric" id="eletric" class="form-control" required>
+                  <input type="text" name="eletric" id="eletric" class="form-control" disabled required value="<?php echo @$eletric;?>">
                 </div>
               </div>
               <!-- <div class="col-md-4">
@@ -380,10 +390,11 @@ if (!($_SESSION['username'] == "Admin")) {
                   <input type="date" name="due_date" id="due_date" class="form-control" required>
                 </div>
               </div> -->
+              <!-- oninput="myFunction()" -->
               <div class="col-md-4" id="billc">
                 <div class="form-group">
                   <p style="color:black;" id="ratec">Previous Reading</p>
-                  <input type="number" name="prev_reading" id="prev_reading" class="form-control" oninput="myFunction()">
+                  <input type="number" name="prev_reading" id="prev_reading" class="form-control" disabled oninput="myFunction()" value="<?php echo @$prev_reading;?>">
                 </div>
               </div>
 
@@ -391,13 +402,13 @@ if (!($_SESSION['username'] == "Admin")) {
               <div class="col-md-4" id="billd">
                 <div class="form-group">
                   <label for="inputGST" class="form-label" id="rated">Current Reading</label>
-                  <input type="number" class="form-control" name="cur_reading" id="cur_reading" oninput="myFunction()">
+                  <input type="number" class="form-control" name="cur_reading" id="cur_reading" disabled oninput="myFunction()" value="<?php echo @$cur_reading;?>">
                 </div>
               </div>
               <div class="col-md-4" id="billa">
                 <div class="form-group">
                   <p style="color:black;" id="ratea">Kwh</p>
-                  <input type="number" name="inputProductPrice" id="inputProductPrice" class="form-control" oninput="myFunction()">
+                  <input type="number" name="inputProductPrice" id="inputProductPrice" class="form-control" disabled oninput="myFunction()" value="<?php echo @$inputProductPrice;?>">
                 </div>
               </div>
 
@@ -405,14 +416,15 @@ if (!($_SESSION['username'] == "Admin")) {
               <div class="col-md-4" id="billb">
                 <div class="form-group">
                   <label for="inputGST" class="form-label" id="rateb">Per kwh</label>
-                  <input type="number" class="form-control" name="inputGST" id="inputGST" value="18" oninput="myFunction()">
+                  <input type="number" class="form-control" name="inputGST" id="inputGST" value="18" disabled oninput="myFunction()" value="<?php echo @$inputGST;?>">
                 </div>
               </div>
+              
 
               <div class="col-md-4">
                 <div class="form-group">
                   <p style="color:black;">Water Bill</p>
-                  <input type="text" name="water" id="water" class="form-control" required>
+                  <input type="text" name="water" id="water" class="form-control" disabled value="<?php echo @$water;?>">
                 </div>
               </div>
               
@@ -541,12 +553,29 @@ if (!($_SESSION['username'] == "Admin")) {
 
 <script>
   function myFunction() {
+    getTotalReading();
     var price = document.getElementById("inputProductPrice").value;
     var gst = document.getElementById("inputGST").value;
     var total = price * gst;
     document.getElementById("total").value = total;
-
   }
+
+  function getTotalReading() {
+    var totalReading;
+    var kwhValue;
+    var currentReading = parseInt(document.getElementById("cur_reading").value);
+    var previousReading = parseInt(document.getElementById("prev_reading").value);
+    var perKwh = parseInt(document.getElementById("inputGST").value);
+
+    // Fix the calculation by swapping previousReading and currentReading
+    kwhValue = currentReading - previousReading;
+    totalReading = kwhValue * perKwh;
+
+    // Display the kwh and totalReading in the respective input fields
+    document.getElementById("inputProductPrice").value = kwhValue;
+    document.getElementById("eletric").value = totalReading;
+  }
+
 </script>
 
 
@@ -609,7 +638,21 @@ if (!($_SESSION['username'] == "Admin")) {
       $('#lastnm').val(tr.eq(2).text());
       $('#month').val(tr.eq(3).text());
       $('#rent').val(tr.eq(4).text());
-      
+      $('#prev_reading').val(tr.eq(5).text());
+      $('#cur_reading').val(tr.eq(6).text());
+      $('#water').val(tr.eq(7).text());
+
+
+      var prevReadingValue = parseInt($('#prev_reading').val());
+      var curReadingValue = parseInt($('#cur_reading').val());
+
+      var result = Math.abs(prevReadingValue - curReadingValue);
+
+      var totalElecBill = result * 18;
+
+      $('#inputProductPrice').val(result);
+
+      $('#eletric').val(totalElecBill);
     });
 
     $("body").on("click", '#viewopen', function() {

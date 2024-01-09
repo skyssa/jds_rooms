@@ -310,11 +310,7 @@ if (!($_SESSION['username'] == "Admin")) {
               <tbody>
                 <?php include 'conn.php';
                 // $query = "SELECT * FROM `tenant`";
-<<<<<<< HEAD
                 $query = "SELECT * FROM `tenant` AS TN LEFT JOIN `contract` AS CT ON TN.`tenant_id` = CT.`tenant_id`";
-=======
-                $query = "SELECT * FROM `tenant` LEFT JOIN `contract` ON `tenant`.`tenant_id` = `contract`.`tenant_id` LEFT JOIN `tenant_reading_bill` AS TRB  ON `tenant`.`tenant_id` = TRB.tenant_id";
->>>>>>> 5ecf7733b80d379a4383d987623e894e1f247620
                 $mysqlis = mysqli_query($con, $query);
               
                 while($row = mysqli_fetch_array($mysqlis)){

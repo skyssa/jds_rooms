@@ -9,13 +9,15 @@ $res = mysqli_query($con, $sql);
 $row = mysqli_fetch_assoc($res);
 do {
 	$role = $row['role'];
+	$id = $row['tenant_id'];
 	$row = mysqli_fetch_assoc($res);
 } while ($row);
+
+
 if (!$user && $role == 'Caretaker') {
 	echo '<script>window.location.href = "login.php";</script>';
 	exit();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -187,9 +189,9 @@ if (!$user && $role == 'Caretaker') {
 						<div class="card-body">
 							<h1 class="h3 mb-2 text-gray-800" align="center">Payments</h1>
 							<div class="table-responsive">
-							<button class="btn btn-primary btn-flat btn-sm mb-3"  id="add">ADD BILLING</button>
+								<button class="btn btn-primary btn-flat btn-sm mb-3" id="add">ADD BILLING</button>
 								<!-- <button class="btn  btn-danger btn-flat btn-sm mb-3" id="openmodal">TOTAL BILLING PAYMENT</button> -->
-								
+
 								<div class="form-group">
 									<input type="text" name="search" placeholder="Search" id="myInput" class="form-control" width="100%" cellspacing="0">
 								</div>
@@ -208,7 +210,7 @@ if (!$user && $role == 'Caretaker') {
 											<th style="font-size:15px;">Due Date</th>
 											<th style="font-size:15px;">Mode Of Payment</th>
 											<th style="font-size:15px;">Sender</th>
-											
+
 											<th style="display:none">1</th>
 											<th style="display:none">2</th>
 											<th style="display:none">3</th>
@@ -220,6 +222,8 @@ if (!$user && $role == 'Caretaker') {
 									</thead>
 									<tbody>
 										<?php
+										
+										
 
 										$sql = "SELECT * FROM payment";
 										$result = mysqli_query($con, $sql);
@@ -234,8 +238,30 @@ if (!$user && $role == 'Caretaker') {
 												$fname = $row1['fname'];
 												$lname = $row1['lname'];
 												$uname = $row1['u_name'];
+
 												$row1 = mysqli_fetch_assoc($result1);
 											} while ($row1);
+
+											// $sql = "SELECT * FROM `contract` WHERE tenant_id='$t_id'";
+											// $result = mysqli_query($con, $sql);
+											// $row1 = mysqli_fetch_assoc($result);
+											// do {
+											// 	$date = $row1['start_day'];
+											// 	$amount= $row1['rent_per_term'];
+											// 	$desc= "MONTHLY RENT";
+
+											// 	$currentDateTime = new DateTime();
+											// 	$n = $currentDateTime->format('Y-m-d');
+											// 	echo $n;
+											// 	echo $t_id;
+											// 	if ($n === $date) {
+											// 		$sql1 = "INSERT INTO `payment`(tenant_id,amount,date,description,date_send,status) 
+											// 			VALUES ('$t_id','$amount','$date','MONTHLY RENT','$n','Pending')";
+											// 		mysqli_query($con, $sql1);
+											// 	}
+											// 	$row1 = mysqli_fetch_assoc($result);
+											// } while ($row1);
+
 											$id = $row['payment_id'];
 											$desc = $row['description'];
 											$sender = $row['sender'];
@@ -250,11 +276,11 @@ if (!$user && $role == 'Caretaker') {
 											$ref = $row['ref_no'];
 											$pic = $row['picture'];
 											$date_send = $row['date_send'];
-											$electric=$row['pay_from'];
-											$water=$row['pay_to'];
+											$electric = $row['pay_from'];
+											$water = $row['pay_to'];
 											$confirmed = $row['confirmed_date'];
 											$total = $row['consumption'];
-											$date=$row['date'];
+											$date = $row['date'];
 											$timestamp = strtotime($date);
 
 											// Add 3 days to the timestamp
@@ -262,8 +288,7 @@ if (!$user && $role == 'Caretaker') {
 
 											// Convert the new timestamp back to a human-readable date
 											$newDate = date("Y-m-d", $newTimestamp);
-											$Date=date("Y-m-d", $timestamp);
-											
+											$Date = date("Y-m-d", $timestamp);
 											echo '<tr>';
 											echo '<td>' . $fname . ' ' . $lname . '<br/>(' . $uname . ')</td>';
 											echo '<td>' . $desc . '</td>';
@@ -273,16 +298,14 @@ if (!$user && $role == 'Caretaker') {
 											echo '<td>' . $water . '</td>';
 											echo '<td>' . number_format($amount) . '</td>';
 											echo '<td>' . $total . '</td>';
-											echo '<td>' . $Date . '</td>';
-											echo '<td>'.$newDate.'</td>';
+											echo '<td>' . $date . '</td>';
+											echo '<td>' . $newDate . '</td>';
 											echo '<td>' . $ref . '</td>';
 											echo '<td>' . $sender . '</td>';
-											
 											echo '<td style="display:none" >' . $pic . '</td>';
 											echo '<td style="display:none" >' . $date_send . '</td>';
 											echo '<td style="display:none" >' . $confirmed . '</td>';
 											echo '<td  >' . $status . '</td>';
-
 											// if ($status == 'Pending Review') {
 											//   echo '<td><button class="btn-sm btn btn-flat btn-primary " id="viewopen">View</button><button class="btn-sm btn btn-flat btn-success m-1"><a href="confirmed_billing.php?id=' . $id . '" style="color:white;">Confirmed</a></button> <button class="btn-sm btn btn-flat btn-danger m-1"><a href="cancel_billing.php?id=' . $id . '" style="color:white;">Cancel</a></button></td>';
 											// } elseif ($status == 'CONFIRMED') {
@@ -400,7 +423,7 @@ if (!$user && $role == 'Caretaker') {
 											<input type="text" id="roomget" name="roomget" style="display:none;">
 											<div class="form-group">
 												<p style="color:black;">First Name</p>
-												<input type="text" id="nameko" name="nameko" class="form-control" disabled required >
+												<input type="text" id="nameko" name="nameko" class="form-control" disabled required>
 											</div>
 										</div>
 										<div class="col-md-4">
@@ -412,15 +435,15 @@ if (!$user && $role == 'Caretaker') {
 										<div class="col-md-4">
 											<div class="form-group">
 												<p style="color:black;">Date</p>
-												<input type="text" name="date" id="date" class="form-control" >
+												<input type="text" name="date" id="date" class="form-control">
 											</div>
 										</div>
-										<div class="col-md-4">
+										<!-- <div class="col-md-4">
 											<div class="form-group">
 												<p style="color:black;">Room rent</p>
-												<input type="text" name="rent" id="rent" class="form-control" >
+												<input type="text" name="rent" id="rent" class="form-control">
 											</div>
-										</div>
+										</div> -->
 										<div class="col-md-4">
 											<div class="form-group">
 												<p style="color:black;">Electric Bill</p>
@@ -430,7 +453,7 @@ if (!$user && $role == 'Caretaker') {
 										<div class="col-md-4">
 											<div class="form-group">
 												<p style="color:black;">Water Bill</p>
-												<input type="text" name="water" id="water" class="form-control" >
+												<input type="text" name="water" id="water" class="form-control">
 											</div>
 										</div>
 										<!-- <div class="col-md-4" id="billc">
@@ -442,13 +465,13 @@ if (!$user && $role == 'Caretaker') {
 										<div class="col-md-4">
 											<div class="form-group">
 												<p style="color:black;">Previous Reading</p>
-												<input type="text" name="prev_reading" id="prev_reading" class="form-control" >
+												<input type="text" name="prev_reading" id="prev_reading" class="form-control">
 											</div>
 										</div>
 										<div class="col-md-4">
 											<div class="form-group">
 												<p style="color:black;">Current Reading</p>
-												<input type="text" name="cur_reading" id="cur_reading" class="form-control" >
+												<input type="text" name="cur_reading" id="cur_reading" class="form-control">
 											</div>
 										</div>
 										<!-- <div class="col-md-4" id="billd">
@@ -457,7 +480,7 @@ if (!$user && $role == 'Caretaker') {
 												<input type="number" class="form-control" name="cur_reading" id="cur_reading" disabled oninput="myFunction()" value="<?php echo @$cur_reading; ?>">
 											</div>
 										</div> -->
-										
+
 										<!-- <div class="col-md-4" id="billa">
 											<div class="form-group">
 												<p style="color:black;" id="ratea">Kwh</p>
@@ -467,7 +490,7 @@ if (!$user && $role == 'Caretaker') {
 										<div class="col-md-4">
 											<div class="form-group">
 												<p style="color:black;">kwh</p>
-												<input type="text" name="inputProductPrice" id="inputProductPrice" class="form-control" >
+												<input type="text" name="inputProductPrice" id="inputProductPrice" class="form-control">
 											</div>
 										</div>
 										<div class="col-md-4">
@@ -586,7 +609,7 @@ if (!$user && $role == 'Caretaker') {
 									<th>First Name</th>
 									<th>Last Name</th>
 									<th>Date</th>
-									<th>rent</th>
+									<!-- <th>rent</th> -->
 									<th>Action</th>
 
 								</tr>
@@ -595,16 +618,20 @@ if (!$user && $role == 'Caretaker') {
 								<?php
 								include 'config.php';
 
+
 								$sql = "SELECT * FROM `tenant` as t JOIN `contract` as c ON t.`tenant_id` = c.`tenant_id`";
 								$result = mysqli_query($con, $sql);
+								$currentDateTime = new DateTime();
+								$n = $currentDateTime->format('Y-m-d');
 								while ($row = mysqli_fetch_assoc($result)) {
+
 								?>
 									<tr class="active_chat">
 										<td class="title"><?php echo $row['tenant_id']; ?></td>
 										<td class="title"><?php echo $row['fname']; ?></td>
 										<td class="title"><?php echo $row['lname']; ?></td>
-										<td class="title"><?php echo $row['start_day']; ?></td>
-										<td class="title"><?php echo $row['rent_per_term']; ?></td>
+										<td class="title"><?php echo $n; ?></td>
+										<!-- <td class="title"><?php echo $row['rent_per_term']; ?></td> -->
 										<td><button class=" btn-flat btn-sm btn-primary mr-2" id="clicks">ADD</button>
 									</tr>
 								<?php } ?>
@@ -630,16 +657,16 @@ if (!$user && $role == 'Caretaker') {
 							</div>
 							<div class="col-md-6 form-group">
 								<label>DATE</label>
-								<input type="text" id="monthlydate" name="monthlydate" class="form-control">
+								<input type="text" id="monthlydate" name="monthlydate" placeholder="YEAR-DAY-MONTH ex.2020-1-01" class="form-control">
 							</div>
-							<div class="col-md-6 form-group">
+							<!-- <div class="col-md-6 form-group">
 								<label>Rent this month</label>
 								<input type="text" id="monthlyrent" name="monthlyrent" class="form-control">
-							</div>
+							</div> -->
 
 							<div class="col-md-6 form-group">
 								<label>Electric Bill</label>
-								<input type="text" name="bill" value="Electric bill" placeholder="Electric Bill" class="form-control" disabled>
+								<input type="text" name="bill" placeholder="Electric Bill" class="form-control">
 								<!-- <select class="form-control" name="bill">
 									<option value="Electric bill">Electric  Bill</option>
 								</select> -->
@@ -657,7 +684,7 @@ if (!$user && $role == 'Caretaker') {
 
 							<div class="col-md-6 form-group" name="consumptions">
 								<label>Total Consumption of Electric</label>
-								<input type="text" name="consumptions" class="form-control" placeholder="kwh" disabled>
+								<input type="text" name="consumptions" class="form-control" placeholder="kwh">
 							</div>
 
 							<div class="col-md-6 form-group">
@@ -815,11 +842,11 @@ if (!$user && $role == 'Caretaker') {
 			$('#getid').val(tr.eq(0).text());
 			$('#nameko').val(tr.eq(1).text());
 			$('#lastnm').val(tr.eq(2).text());
-			$('#date').val(tr.eq(3).text());
-			$('#rent').val(tr.eq(4).text());
-			$('#prev_reading').val(tr.eq(5).text());
-			$('#cur_reading').val(tr.eq(6).text());
-			$('#water').val(tr.eq(7).text());
+			// $('#date').val(tr.eq(3).text());
+			// $('#rent').val(tr.eq(4).text());
+			$('#prev_reading').val(tr.eq(3).text());
+			$('#cur_reading').val(tr.eq(4).text());
+			$('#water').val(tr.eq(3).text());
 
 
 
@@ -907,7 +934,7 @@ if (!$user && $role == 'Caretaker') {
 			$('#lname').val(tr.eq(2).text());
 			$('#monthlydate').val(tr.eq(3).text());
 			$('#monthlyrent').val(tr.eq(4).text());
-			
+
 		});
 
 

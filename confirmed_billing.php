@@ -3,21 +3,32 @@ error_reporting(0);
 include 'conn.php';
 $id=$_GET['id'];
 $id2=$_GET['id2'];
+// $start=$_GET['Date'];
+
 date_default_timezone_set('Asia/Manila');
 $Date=date('M d Y');
 $time=date('h:i:s A' );
+
+
 $mysqli="update  payment set status='CONFIRMED',confirmed_date='$Date' where payment_id='$id' ";
 mysqli_query($con,$mysqli);
-$mysqli1="update contract set status='CONFIRMED' where tenant_id='$id2' ";
+
+$query="SELECT * FROM `contract` WHERE tenant_id='$id2'";
+$result1 = mysqli_query($con, $query);
+$row1 = mysqli_fetch_assoc($result1);
+do{
+    $start = $row1['start_day'];
+    $row1 = mysqli_fetch_assoc($result1);
+}while($row1);
+$originalDate = new DateTime($start);
+
+// Add one month to the original date
+$nextMonthDate = $originalDate->modify('+1 month');
+$newDate = $nextMonthDate->format('Y-m-d');
+
+
+$mysqli1="UPDATE `contract`  SET start_day='$newDate' ,status='CONFIRMED' WHERE tenant_id='$id2'";
 mysqli_query($con,$mysqli1);
 header("Location:payment_detail.php");
-
-
-
-
-
-
-
-
 
 ?>

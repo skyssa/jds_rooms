@@ -191,49 +191,51 @@ if (!($_SESSION['username'] == "Admin")) {
                 $water = $row['pay_to'];
                 $confirmed = $row['confirmed_date'];
                 $total = $row['consumption'];
-                $date=$row['date'];
-											$timestamp = strtotime($date);
+                $date = $row['date'];
+                $timestamp = strtotime($date);
 
-											// Add 3 days to the timestamp
-											$newTimestamp = strtotime('+3 days', $timestamp);
+                // Add 3 days to the timestamp
+                $newTimestamp = strtotime('+3 days', $timestamp);
 
-											// Convert the new timestamp back to a human-readable date
-											$newDate = date("Y-m-d", $newTimestamp);
-											$Date=date("Y-m-d", $timestamp);
-                      
-                    echo '<tr>';
-                    echo '<td>' . $fname . ' ' . $lname . '<br/>(' . $uname . ')</td>';
-                    echo '<td>' . $desc . '</td>';
-                    echo '<td>' . $prev_reading . '</td>';
-                    echo '<td>' . $cur_reading . '</td>';
-                    echo '<td>' . $electric . '</td>';
-                    echo '<td>' . $water . '</td>';
-                    echo '<td>' . number_format($amount) . '</td>';
-                    echo '<td>' . $total . '</td>';
-                    echo '<td>' . $Date . '</td>';
-                    echo '<td>' . $newDate . '</td>';
-                    echo '<td>' . $ref . '</td>';
-                    echo '<td>' . $sender . '</td>';
-                    echo '<td style="display:none" >' . $pic . '</td>';
-                    echo '<td style="display:none" >' . $date_send . '</td>';
-                    echo '<td style="display:none" >' . $confirmed . '</td>';
-                    echo '<td  >' . $status . '</td>';
+                // Convert the new timestamp back to a human-readable date
+                $newDate = date("Y-m-d", $newTimestamp);
+                $Date = date("Y-m-d", $timestamp);
 
-                    if ($status == 'Pending Review') {
-                      echo '<td><button class="btn-sm btn btn-flat btn-primary " id="viewopen">View</button><button class="btn-sm btn btn-flat btn-success m-1"><a href="confirmed_billing.php?id=' . $id . '&id2=' . $id2 . '" style="color:white;">Confirmed</a></button> <button class="btn-sm btn btn-flat btn-danger m-1"><a href="cancel_billing.php?id=' . $id . '" style="color:white;">Cancel</a></button></td>';
-                    } elseif ($status == 'CONFIRMED') {
+                echo '<tr>';
+                echo '<td>' . $fname . ' ' . $lname . '<br/>(' . $uname . ')</td>';
+                echo '<td>' . $desc . '</td>';
+                echo '<td>' . $prev_reading . '</td>';
+                echo '<td>' . $cur_reading . '</td>';
+                echo '<td>' . $electric . '</td>';
+                echo '<td>' . $water . '</td>';
+                echo '<td>' . number_format($amount) . '</td>';
+                echo '<td>' . $total . '</td>';
+                echo '<td>' . $Date . '</td>';
+                echo '<td>' . $newDate . '</td>';
+                echo '<td>' . $ref . '</td>';
+                echo '<td>' . $sender . '</td>';
+                echo '<td style="display:none" >' . $pic . '</td>';
+                echo '<td style="display:none" >' . $date_send . '</td>';
+                echo '<td style="display:none" >' . $confirmed . '</td>';
+                echo '<td  >' . $status . '</td>';
 
-                      echo '<td><button class="btn-sm btn btn-flat btn-primary" id="viewopen">View</button></td>';
-                    } else {
-                    }
+                if ($status == 'Pending Review') {
+                  echo '<td><button class="btn-sm btn btn-flat btn-primary " id="viewopen">View</button><button class="btn-sm btn btn-flat btn-success m-1"><a href="confirmed_billing.php?id=' . $id . '&id2=' . $id2 . '&date=' . $Date . '" style="color:white;">Confirmed</a></button> <button class="btn-sm btn btn-flat btn-danger m-1"><a href="cancel_billing.php?id=' . $id . '" style="color:white;">Cancel</a></button></td>';
+                } elseif ($status == 'CONFIRMED') {
 
-                    echo '</tr>';
-              
+                  echo '<td><button class="btn-sm btn btn-flat btn-primary" id="viewopen">View</button></td>';
+                } else {
+                }
+
+                echo '</tr>';
+
                 $row = mysqli_fetch_assoc($result);
               } while ($row);
+            
               ?>
 
             </tbody>
+
           </table>
 
           <hr>

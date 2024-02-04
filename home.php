@@ -130,48 +130,59 @@ if(!$_SESSION['username']){
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th> Description</th>
                       <th> Date</th>
                       <th>Amount to be Paid (php.)</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php
-                    $query = "SELECT * FROM tenant WHERE u_name = '$uname' ";
-                    $result1 = mysqli_query($con, $query);
-                    $row=mysqli_fetch_assoc($result1);
-                    do{
-                      $id = $row['tenant_id'];
-                      $row = mysqli_fetch_assoc($result1);
-                    }while ($row);
+                    
+                    // $query = "SELECT * FROM tenant WHERE u_name = '$uname' ";
+                    // $result1 = mysqli_query($con, $query);
+                    // $row=mysqli_fetch_assoc($result1);
+                    // do{
+                    //   $id = $row['tenant_id'];
+                    //   $row = mysqli_fetch_assoc($result1);
+                    // }while ($row);
+                    // $query1="SELECT * FROM `contract` WHERE  tenant_id='$id'";
 
-                    $sql = "SELECT * FROM contract WHERE tenant_id = '$id' AND status = 'Active'";
-                    $result = mysqli_query($con, $sql);
-                    $row = mysqli_fetch_assoc($result);
-                    $total = 0;
-                    do{
-                      $hid = $row['room_id'];
-                      $dur = $row['duration_month'];
-                      $term = $row['terms'];
-                      $div = $dur/$term;
-                      $day = $row['start_day'];
-                      $day1  = date("Y-m-d", strtotime($day. "+ 0 days"));
-                      echo '<tr>';
-                      echo '<td>'.$day1.'</td>';
-                      echo '<td>'.$row['rent_per_term'].'</td>';
-                      echo '<tr>';
-                      for ($i = $div; $i < $dur; $i += $div) {
-                        echo '<tr>';
-                        $date  = date("Y-m-d", strtotime("+".$i." months" , strtotime("$day")));
-                        $date1  = date("Y-m-d", strtotime($date. "+ 0 days"));
-                        echo '<td>'.$date1.'</td>';
-                        echo '<td>'.number_format($row['rent_per_term']).'</td>';
-                        echo '<tr>';
-                      }
+                    // $result= mysqli_query($con,$query1);
+                    // $row1=mysqli_fetch_assoc($result); 
+                    // do{
+                    //   $desc=$row1['']
 
-                      echo '<tr><td><b><b><b>TOTAL</b></b></b></td><td>'.number_format($row['total_rent']).'</td></tr>';
+                    // }while($row1);
 
-                      $row = mysqli_fetch_assoc($result);
-                    }while ($row);
+
+                    // $sql = "SELECT * FROM contract WHERE tenant_id = '$id' AND status = 'Active'";
+                    // $result = mysqli_query($con, $sql);
+                    // $row = mysqli_fetch_assoc($result);
+                    // $total = 0;
+                    // do{
+                    //   $hid = $row['room_id'];
+                    //   $dur = $row['duration_month'];
+                    //   $term = $row['terms'];
+                    //   $div = $dur/$term;
+                    //   $day = $row['start_day'];
+                    //   $day1  = date("Y-m-d", strtotime($day. "+ 0 days"));
+                    //   echo '<tr>';
+                    //   echo '<td>'.$day1.'</td>';
+                    //   echo '<td>'.$row['rent_per_term'].'</td>';
+                    //   echo '<tr>';
+                    //   for ($i = $div; $i < $dur; $i += $div) {
+                    //     echo '<tr>';
+                    //     $date  = date("Y-m-d", strtotime("+".$i." months" , strtotime("$day")));
+                    //     $date1  = date("Y-m-d", strtotime($date. "+ 0 days"));
+                    //     echo '<td>'.$date1.'</td>';
+                    //     echo '<td>'.number_format($row['rent_per_term']).'</td>';
+                    //     echo '<tr>';
+                    //   }
+
+                    //   echo '<tr><td><b><b><b>TOTAL</b></b></b></td><td>'.number_format($row['total_rent']).'</td></tr>';
+
+                    //   $row = mysqli_fetch_assoc($result);
+                    // }while ($row);
 
 
                      ?>

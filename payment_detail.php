@@ -220,7 +220,7 @@ if (!($_SESSION['username'] == "Admin")) {
                 echo '<td  >' . $status . '</td>';
 
                 if ($status == 'Pending Review') {
-                  echo '<td><button class="btn-sm btn btn-flat btn-primary " id="viewopen">View</button><button class="btn-sm btn btn-flat btn-success m-1"><a href="confirmed_billing.php?id=' . $id . '&id2=' . $desc . '&date=' . $Date . '" style="color:white;">Confirmed</a></button> <button class="btn-sm btn btn-flat btn-danger m-1"><a href="cancel_billing.php?id=' . $id . '" style="color:white;">Cancel</a></button></td>';
+                  echo '<td><button class="btn-sm btn btn-flat btn-primary " id="viewopen">View</button><button class="btn-sm btn btn-flat btn-success m-1"><a href="confirmed_billing.php?id=' . $id . '&id2=' . $id2 . '&desc=' . $desc . '" style="color:white;">Confirmed</a></button> <button class="btn-sm btn btn-flat btn-danger m-1"><a href="cancel_billing.php?id=' . $id . '" style="color:white;">Cancel</a></button></td>';
                 } elseif ($status == 'CONFIRMED') {
 
                   echo '<td><button class="btn-sm btn btn-flat btn-primary" id="viewopen">View</button></td>';

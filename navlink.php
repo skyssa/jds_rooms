@@ -63,7 +63,7 @@
       <li class="nav-item">
         <a class="nav-link" href="contract.php">
           <i class="fas fa-fw fa-exchange-alt" style="color:black;"></i>
-          <span style="color:black;">Contract</span>
+          <span style="color:black;">Agreement</span>
         </a>
 
       </li>

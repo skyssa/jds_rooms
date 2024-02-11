@@ -17,7 +17,7 @@ while($rowa=mysqli_fetch_assoc($querya)){
 			<div class="chat_ib">
 				<?php      
 				$id=$rowa['user_id'];
-				$ids=$_COOKIE['manager_id'];
+				$ids=isset($_COOKIE['manager_id']);
 				$get="select  *,concat(rent_chat_date,' ',rent_chat_time) as  time from rental_chat where rent_tenant_id='$id'  and  rent_chat_user_id='$ids'  or rent_tenant_id='$ids' and   rent_chat_user_id='$id' order  by  rent_tenant_id  desc limit  1 ";
 				$getrow=mysqli_query($con,$get);
 				$rows=mysqli_fetch_assoc($getrow);

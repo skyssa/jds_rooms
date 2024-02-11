@@ -3,7 +3,7 @@ error_reporting(0);
 include 'conn.php';
 $id = $_GET['id'];
 $id2 = $_GET['id2'];
-//$desc = $_GET['desc'];
+$desc = $_GET['desc'];
 // echo $id2;
 date_default_timezone_set('Asia/Manila');
 $Date = date('M d Y');
@@ -25,7 +25,7 @@ $originalDate = new DateTime($start);
 // Add one month to the original date
 $nextMonthDate = $originalDate->modify('+1 month');
 $newDate = $nextMonthDate->format('Y-m-d');
-if ($id2 === "MONTHLY RENT" || $id2 === "advance payment") {
+if ($desc === "MONTHLY RENT" || $desc === "advance payment") {
     $mysqli1 = "UPDATE `contract`  SET start_day='$newDate' ,status='CONFIRMED' WHERE tenant_id='$id2'";
     mysqli_query($con, $mysqli1);
 }

@@ -57,13 +57,7 @@
 
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link" href="u_change.php">
-          <i class="fas fa-fw fa-exchange-alt" style="color:black;"></i>
-          <span style="color:black;">Change Password</span>
-        </a>
-
-      </li>
+      
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
@@ -105,7 +99,13 @@
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
+      <li class="nav-item">
+        <a class="nav-link" href="u_change.php">
+          <i class="fas fa-fw fa-exchange-alt" style="color:black;"></i>
+          <span style="color:black;">Change Password</span>
+        </a>
 
+      </li>
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

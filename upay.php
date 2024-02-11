@@ -117,6 +117,7 @@ if (!$_SESSION['username']) {
                       <th style="font-size:15px;">Mode Of Payment</th>
                       <th style="font-size:15px;">DATE</th>
                       <th style="font-size:15px;">Due Date</th>
+                      <th style="font-size:15px;">Next Month Payment</th>
                       <th style="font-size:15px;">Status</th>
                       <th style="display:none">Description</th>
                       <th style="font-size:15px;">Action</th>
@@ -199,9 +200,9 @@ if (!$_SESSION['username']) {
                         $pic = $row['picture'];
                         $confirmed = $row['confirmed_date'];
                         $currentDateTime = date('Y-m-d');
-                        $date = $row['date'];
+                        $yate = $row['date'];
                         
-                        $timestamp = strtotime($date);
+                        $timestamp = strtotime($yate);
                         // Add 3 days to the timestamp
                         $newTimestamp = strtotime('+3 days', $timestamp);
                         // Convert the new timestamp back to a human-readable date
@@ -220,6 +221,7 @@ if (!$_SESSION['username']) {
                         echo '<td style="font-size:15px;">' . $ref . '</td>';
                         echo '<td style="font-size:15px;">' . $Date . '</td>';
                         echo '<td style="font-size:15px;">' . $newDate . '</td>';
+                        echo '<td style="font-size:15px;">' . $date . '</td>';
                         echo '<td style="display:none;">' . $pic . '</td>';
                         echo '<td style="display:none;">' . $confirmed . '</td>';
                         if ($status == 'Pending') {
@@ -377,7 +379,7 @@ if (!$_SESSION['username']) {
             <div class="col-md-6">
               <p class="p-0 m-0" style="font-size:14px;">DESCRIPTION:</p>
               <p class="p-0 m-0" style="font-size:14px;color:blue;"><span style="font-size:14px;" id="desc"></span></p>
-              <p class="p-0 m-0">CONSUMPTION</p>
+              <p class="p-0 m-0">BILL</p>
               <p class="p-0 m-0" style="font-size:14px;color:blue;"><span style="font-size:14px;" id="con"></span></p>
             </div>
             <p class="p-0 m-0">----------------------------------------------------------------------</p>

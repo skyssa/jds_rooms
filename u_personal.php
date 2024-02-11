@@ -169,21 +169,6 @@ if(!$_SESSION['username']){
                       echo '<tr>';
 
                       echo '<tr>';
-                      echo "<td>City</td>";
-                      echo "<td style = 'color:blue;'>".$row['city']."</td>";
-                      echo '<tr>';
-
-                      echo '<tr>';
-                      echo "<td>Region</td>";
-                      echo "<td style = 'color:blue;'>".$row['region']."</td>";
-                      echo '<tr>';
-
-                      echo '<tr>';
-                      echo "<td></td>";
-                      echo "<td></td>";
-                      echo '<tr>';
-
-                      echo '<tr>';
                       echo "<td>Choose below the information you would like to edit: </td>";
                       echo '<tr>';
 
@@ -224,8 +209,7 @@ if(!$_SESSION['username']){
                      <option value = 'pno1'>Phone Number 2 e.g; 0922*******</option>
                      <option value = 'e_address'>Email Address</option>
                      <option value = 'p_address'>Postal Address</option>
-                     <option value = 'city'>City</option>
-                     <option value = 'region'>Region</option>
+                  
                    </select></td>
                      <td><input type='text' class='form-control form-control-user' name='edit'></td>
                      <tr>

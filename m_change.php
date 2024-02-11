@@ -92,14 +92,14 @@ function check($data){
       <hr class="sidebar-divider">
 
       <!-- Nav Item - Charts -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="mform_out.php">
           <i class="fas fa-fw fa-clipboard-list" style="color:black;"></i>
           <span style="color:black;">Tenant-Out Room Condition</span>
         </a>
 
       </li>
-      <hr class="sidebar-divider">
+      <hr class="sidebar-divider"> -->
 
             <li class="nav-item">
 

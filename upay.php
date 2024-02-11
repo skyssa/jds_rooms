@@ -218,7 +218,7 @@ if (!$_SESSION['username']) {
                         echo '<td style="font-size:15px;">' . $amount . '</td>';
                         echo '<td style="font-size:15px;">' . $con . '</td>';
                         echo '<td style="font-size:15px;">' . $ref . '</td>';
-                        echo '<td style="font-size:15px;">' . $date . '</td>';
+                        echo '<td style="font-size:15px;">' . $Date . '</td>';
                         echo '<td style="font-size:15px;">' . $newDate . '</td>';
                         echo '<td style="display:none;">' . $pic . '</td>';
                         echo '<td style="display:none;">' . $confirmed . '</td>';

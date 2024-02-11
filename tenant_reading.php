@@ -298,7 +298,7 @@ if (!$user && $role == 'Caretaker') {
 											echo '<td>' . $water . '</td>';
 											echo '<td>' . number_format($amount) . '</td>';
 											echo '<td>' . $total . '</td>';
-											echo '<td>' . $date . '</td>';
+											echo '<td>' . $Date . '</td>';
 											echo '<td>' . $newDate . '</td>';
 											echo '<td>' . $ref . '</td>';
 											echo '<td>' . $sender . '</td>';

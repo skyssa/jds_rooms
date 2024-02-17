@@ -19,7 +19,7 @@ if ($room === null || $price === null || $date === null || $contract === null) {
   echo "Please fill out all the required fields.";
 } else {
 
-  $sql1 = "INSERT INTO payment VALUES (' ','$id', '$room','$price','','','$date','$desc','','','','','','$date_reg1','$stat','','')";
+  $sql1 = "INSERT INTO payment VALUES (' ','$id', '','$price','','','$date','$desc','','','','','$room','$date_reg1','$stat','','')";
   mysqli_query($con, $sql1);
   $sql2 = "INSERT INTO `contract` VALUES (' ','$id', '$room','','','$term','$price','$date','','$date_reg1','$stat')";
   mysqli_query($con, $sql2);

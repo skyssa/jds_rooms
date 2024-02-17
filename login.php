@@ -142,12 +142,12 @@ setcookie("manager_id",$tenantid,time()+6000);
         echo "<script type='text/javascript'>
             document.addEventListener('DOMContentLoaded', function() {
                 Swal.fire({
-                    title: 'Welcome $fname $lname!',
-                    icon: 'success',
+                    title: 'Your Acount has Deactivate',
+                    icon: 'warning',
                     confirmButtonText: 'Continue'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = 'waiting.php';
+                        window.location.href = 'login.php';
                     }
                 });
             });

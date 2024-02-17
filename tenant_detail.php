@@ -196,10 +196,11 @@ if(!$_SESSION['username']){
                         echo '<td>'.$city.'</td>';
                         echo '<td>'.$region.'</td>';
                         
-                        echo "<td style = 'color:red;'>Contact the System Administrator.</td>";
+                        echo "<td style = 'color:red;'>Deactivate</td>";
                         echo "<td align = 'center'><a href='edit_tenant.php?id=".$row['tenant_id']."' class='btn btn-success btn-circle'><i class='fas fa-edit'></i></a></td>";
                         echo '</tr>';
                       }
+                      
                       else {
 
                         echo '<tr>';

@@ -176,7 +176,7 @@ if (!$_SESSION['username']) {
 
                     echo '<p>Total Amount: ' . $totalAmount . '</p>';
 
-                    $sql3 = "SELECT * FROM contract WHERE tenant_id = '$id' AND status = 'Active' ";
+                    $sql3 = "SELECT * FROM contract WHERE tenant_id = '$id' AND status = 'Active'";
                     $result = mysqli_query($con, $sql);
                     $result3 = mysqli_query($con, $sql3);
                     $row = mysqli_fetch_assoc($result);

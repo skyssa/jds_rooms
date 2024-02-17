@@ -115,9 +115,9 @@ if (!$_SESSION['username']) {
                       <th style="font-size:15px;">Total</th>
                       <th style="display:none">Description</th>
                       <th style="font-size:15px;">Mode Of Payment</th>
-                      <th style="font-size:15px;">DATE</th>
-                      <th style="font-size:15px;">Due Date</th>
-                      <th style="font-size:15px;">Next Month Payment</th>
+                      <th style="font-size:15px; width:120px;">DATE</th>
+                      <th style="font-size:15px; width:120px;">Due Date</th>
+                      <th style="font-size:12px;">Next Month Payment</th>
                       <th style="font-size:15px;">Status</th>
                       <th style="display:none">Description</th>
                       <th style="font-size:15px;">Action</th>
@@ -208,6 +208,11 @@ if (!$_SESSION['username']) {
                         // Convert the new timestamp back to a human-readable date
                         $newDate = date("Y-m-d", $newTimestamp);
                         $Date = date("Y-m-d", $timestamp);
+
+                        $origDate = new DateTime($Date);// Add one month to the original date
+                        $nextMonthRentDate = $origDate->modify('+1 month');
+                        $newrentDate = $nextMonthRentDate->format('Y-m-d');
+           
                         echo '<tr>';
                         echo '<td style="display:none;">' . $id . '</td>';
                         echo '<td style="font-size:15px;">' . $desc . '</td>';
@@ -221,7 +226,7 @@ if (!$_SESSION['username']) {
                         echo '<td style="font-size:15px;">' . $ref . '</td>';
                         echo '<td style="font-size:15px;">' . $Date . '</td>';
                         echo '<td style="font-size:15px;">' . $newDate . '</td>';
-                        echo '<td style="font-size:15px;">' . $date . '</td>';
+                        echo '<td style="font-size:15px;">' . $newrentDate . '</td>';
                         echo '<td style="display:none;">' . $pic . '</td>';
                         echo '<td style="display:none;">' . $confirmed . '</td>';
                         if ($status == 'Pending') {
@@ -365,7 +370,7 @@ if (!$_SESSION['username']) {
             <span aria-hidden="true">&times;</span></button>
         </div>
         <div class="modal-body">
-          <div class="getimage" id="getimage">
+          <div class="getimage" id="getimage" >
 
           </div>
           <div class="row">
@@ -434,7 +439,7 @@ if (!$_SESSION['username']) {
     $("body").on("click", '#viewopen', function() {
       $('form')[0].reset();
       var tr = $(this).closest("tr").find('td');
-      var pic = tr.eq(9).text();
+      var pic = "<?php echo $pic; ?>";
       $('#sendername').text(tr.eq(5).text());
       $('#datefetch').text(tr.eq(10).text());
       $('#desc').text(tr.eq(3).text());

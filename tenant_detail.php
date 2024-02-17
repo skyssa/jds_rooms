@@ -183,6 +183,7 @@ if(!$_SESSION['username']){
                         echo '</tr>';
                       }
                       elseif ($status == 2) {
+                       
                         echo '<tr>';
                         echo '<td><img src="img/'.$profile_image.'" style="width:100%;height:100px;"></td>';
                         echo '<td>'.$fname.' '.$lname.'<br/>('.$uname.')</td>';

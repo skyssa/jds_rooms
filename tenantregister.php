@@ -24,6 +24,12 @@ if (isset($_POST["submit"])) {
     $rpword = check($_POST['repeatPassword']);
     $profile_image = check($_POST['profile_image']);
 
+    $filename = $_FILES['productimage']['name'];
+    $folder = 'img/';
+    $destination = $folder . $filename;
+    move_uploaded_file($_FILES['productimage']['tmp_name'],$destination);
+
+
 
 
 
@@ -282,7 +288,7 @@ if (isset($_POST["submit"])) {
                               </script>";
                                             } elseif ($pword == $rpword) {
                                                 $pword = md5($pword);
-                                                $sql = "INSERT INTO tenant VALUES (' ','$fname','$lname','','','$occ','$pno1','$pno2','$email','','','','$uname','$pword', '$date_reg', '$status','$profile_image')";
+                                                $sql = "INSERT INTO tenant VALUES (' ','$fname','$lname','','','$occ','$pno1','$pno2','$email','','','','$uname','$pword', '$date_reg', '$status','$filename')";
                                                 mysqli_query($con, $sql);
                                                 echo "<script src='https://cdn.jsdelivr.net/npm/sweetalert2@11'></script>";
                                                 echo "<script>
@@ -392,7 +398,7 @@ if (isset($_POST["submit"])) {
                                 <h1 class="h4 text-gray-900 mb-4"><b><b>REGISTRATION</b></b></h1>
                             </div>
                             <p><span style="color:#4e73df;"><b><b>PERSONAL PARTICULARS</b></b></span></p>
-                            <form class="user" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+                            <form class="user" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <div class="col-sm-6 ">
                                         <input type="text" class="form-control form-control-user" name="FirstName" value="<?php echo @$fname; ?>" placeholder="First Name" required>
@@ -437,7 +443,7 @@ if (isset($_POST["submit"])) {
 
 
                                             <label for="profile_image">Upload your ID </label>
-                                            <input type="file" class="form-control-file" name="profile_image" accept="image/*" value="<?php echo @$profile_image; ?>" placeholder="Image">
+                                            <input type="file" class="form-control-file" name="profile_image" value="<?php echo @$profile_image; ?>" placeholder="Image">
                                         </div>
                                     </div>
                                 </div>

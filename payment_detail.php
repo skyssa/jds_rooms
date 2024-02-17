@@ -710,7 +710,7 @@ if (!($_SESSION['username'] == "Admin")) {
     $("body").on("click", '#viewopen', function() {
       $('form')[0].reset();
       var tr = $(this).closest("tr").find('td');
-      var pic = tr.eq(10).text();
+      var pic = "<?php echo $pic; ?>";
       $('#getimage').html('<img src="img/' + pic + '"  style="width:100%;height:500px;"/>');
       $('#sender').text(tr.eq(8).text());
       $('#ref').text(tr.eq(9).text());

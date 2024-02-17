@@ -7,7 +7,11 @@ if(!$_SESSION['username']){
   echo '<script>window.location.href = "login.php";</script>';
   exit();
 }
- ?>
+// $sql="SELECT * FROM tenant_contacts";
+// $result = mysqli_query($con, $sql);
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">

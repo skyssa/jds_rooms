@@ -106,7 +106,7 @@ setcookie("manager_id",$tenantid,time()+6000);
       if ($stat == 0) {
         $_SESSION['username'] = $uname;
         $_SESSION['userid'] = $id;
-        ;
+        ; 
         echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
       echo "<script type='text/javascript'>
         Swal.fire({
@@ -115,7 +115,7 @@ setcookie("manager_id",$tenantid,time()+6000);
           confirmButtonText: 'Continue'
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = 'home.php';
+            window.location.href = 'redirect.php';
           }
         });
       </script>";   
@@ -131,7 +131,7 @@ setcookie("manager_id",$tenantid,time()+6000);
                     confirmButtonText: 'Continue'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        window.location.href = 'home.php';
+                        window.location.href = 'redirect.php';
                     }
                 });
             });

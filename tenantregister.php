@@ -417,7 +417,7 @@ if (isset($_POST["submit"])) {
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="number" class="form-control form-control-user" name="pno2" value="<?php echo @$pno2; ?>" placeholder="Phone Number 2 e.g; 0922*******" required>
+                                        <input type="number" class="form-control form-control-user" name="pno2" value="<?php echo @$pno2; ?>" placeholder="Phone Number 2 e.g; 0922*******">
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="email" class="form-control form-control-user" name="email" value="<?php echo @$email; ?>" placeholder="Email Address" required>
@@ -443,7 +443,7 @@ if (isset($_POST["submit"])) {
 
 
                                             <label for="profile_image">Upload your ID </label>
-                                            <input type="file" class="form-control-file" name="profile_image" value="<?php echo @$profile_image; ?>" placeholder="Image">
+                                            <input type="file" class="form-control-file" name="profile_image" accept="image/*" value="<?php echo @$profile_image; ?>" placeholder="Image" required>
                                         </div>
                                     </div>
                                 </div>

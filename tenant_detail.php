@@ -104,9 +104,6 @@ if(!$_SESSION['username']){
                       <th>Phone # 1</th>
                       <th>Phone # 2</th>
                       <th>Email</th>
-                      <th>Postal Address</th>
-                      <th>City</th>
-                      <th>Region</th>
                       <th>Status</th>
                       
                       <th></th>
@@ -140,9 +137,7 @@ if(!$_SESSION['username']){
                       $pno1 = $row['p_no'];
                       $pno2 = $row['pno1'];
                       $email = $row['e_address'];
-                      $postal = $row['p_address'];
-                      $city = $row['city'];
-                      $region= $row['region'];
+                     
                       
                       
                       
@@ -157,9 +152,9 @@ if(!$_SESSION['username']){
                         echo '<td>'.$pno1.'</td>';
                         echo '<td>'.$pno2.'</td>';
                         echo '<td>'.$email.'</td>';
-                        echo '<td>'.$postal.'</td>';
-                        echo '<td>'.$city.'</td>';
-                        echo '<td>'.$region.'</td>';
+                       
+                      
+                      
                         
                         echo "<td style = 'color:green;'>Payment Pending</td>";
                         echo "<td align = 'center'><a href='edit_tenant.php?id=".$row['tenant_id']."' class='btn btn-success btn-circle'><i class='fas fa-edit'></i></a></td>";
@@ -174,10 +169,9 @@ if(!$_SESSION['username']){
                         echo '<td>'.$pno1.'</td>';
                         echo '<td>'.$pno2.'</td>';
                         echo '<td>'.$email.'</td>';
-                        echo '<td>'.$postal.'</td>';
-                        echo '<td>'.$city.'</td>';
-                        echo '<td>'.$region.'</td>';
-                        
+                       
+                       
+                       
                         echo "<td><b><b>Account Active</b></b></td>";
                         echo "<td align = 'center'><a href='edit_tenant.php?id=".$row['tenant_id']."' class='btn btn-success btn-circle'><i class='fas fa-edit'></i></a></td>";
                         echo '</tr>';
@@ -193,9 +187,8 @@ if(!$_SESSION['username']){
                         echo '<td>'.$pno1.'</td>';
                         echo '<td>'.$pno2.'</td>';
                         echo '<td>'.$email.'</td>';
-                        echo '<td>'.$postal.'</td>';
-                        echo '<td>'.$city.'</td>';
-                        echo '<td>'.$region.'</td>';
+
+                        
                         
                         echo "<td style = 'color:red;'>Deactivate</td>";
                         echo "<td align = 'center'><a href='edit_tenant.php?id=".$row['tenant_id']."' class='btn btn-success btn-circle'><i class='fas fa-edit'></i></a></td>";
@@ -213,9 +206,8 @@ if(!$_SESSION['username']){
                         echo '<td>'.$pno1.'</td>';
                         echo '<td>'.$pno2.'</td>';
                         echo '<td>'.$email.'</td>';
-                        echo '<td>'.$postal.'</td>';
-                        echo '<td>'.$city.'</td>';
-                        echo '<td>'.$region.'</td>';
+                        
+                       
                         
                         echo "<td style = 'color:red;'>Contract has Expired.</td>";
                         echo "<td align = 'center'><a href='edit_tenant.php?id=".$row['tenant_id']."' class='btn btn-success btn-circle'><i class='fas fa-edit'></i></a></td>";

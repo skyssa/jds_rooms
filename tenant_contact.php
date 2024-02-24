@@ -101,13 +101,11 @@ if(!($_SESSION['username'] == "Admin")){
                       <th>Tenant's Name</th>
                       <th>Contact's Name</th>
                       <th>Occupation</th>
-                      <th>Nature of the Relationshiip</th>
-                      <th>Phone # 1</th>
-                      <th>Phone # 2</th>
+                      <th>Relationship</th>
+                      <th>Phone# </th>
                       <th>Email</th>
-                      <th>Postal Address</th>
                       <th>City</th>
-                      <th>Region</th>
+                     
                     </tr>
                   </thead>
                   <tbody>
@@ -151,7 +149,6 @@ if(!($_SESSION['username'] == "Admin")){
                       }
                       $postal = $row['p_address1'];
                       $city = $row['city1'];
-                      $region = $row['region1'];
                       $nature = $row['nature1'];
 
 
@@ -161,7 +158,6 @@ if(!($_SESSION['username'] == "Admin")){
 
                       $postal1 = $row['p_address2'];
                       $city1 = $row['city1'];
-                      $region1 = $row['region2'];
                       $nature1 = $row['nature2'];
 
                       echo '<tr>';
@@ -169,12 +165,9 @@ if(!($_SESSION['username'] == "Admin")){
                       echo '<td>'.$cfname.' '.$clname.'</td>';
                       echo '<td>'.$occ.'</td>';
                       echo '<td>'.$nature.'</td>';
-                      echo '<td>'.$pno1.'</td>';
-                      echo '<td>'.$pno2.'</td>';
+                      echo '<td>'.$pno1.'</td>';                   
                       echo '<td>'.$email.'</td>';
-                      echo '<td>'.$postal.'</td>';
                       echo '<td>'.$city.'</td>';
-                      echo '<td>'.$region.'</td>';
                       echo '</tr>';
 
                       

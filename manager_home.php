@@ -188,7 +188,7 @@ if(!$user && $role == 'Caretaker'){
         <!-- Begin Page Content -->
         <div class="container-fluid">
           <h1 class="h3 mb-2 text-gray-800" align = "center">Tenants</h1>
-          <p style="color:red;"><b><b>Please click a number from the table to send a message.</b></b></p>
+          
 
           <div class="card shadow mb-4">
 
@@ -201,11 +201,8 @@ if(!$user && $role == 'Caretaker'){
                       <th>Phone Number 1</th>
                       <th>Phone Number 2</th>
                       <th>Room Name</th>
-                      <th>Duration of Occupation in months</th>
-                      <th>Terms of Payment</th>
-                      <th>Rent per Term(php)</th>
-                      <th>Beginning of Contract</th>
-                      <th>End of Contract</th>
+                      <th>Rent per Month(php)</th>
+                      <th>Date Start</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -251,11 +248,8 @@ if(!$user && $role == 'Caretaker'){
                         echo "<td><a href ='manager_send.php?id=".$pno."'>".$pno."</a></td>";
                         echo "<td><a href ='manager_send.php?id=".$pno1."'>".$pno1."</a></td>";
                         echo '<td>'.$hname.'</td>';
-                        echo '<td>'.$dur.'</td>';
-                        echo '<td>'.$term.'</td>';
                         echo '<td>'.number_format($per).'</td>';
                         echo '<td>'.$start.'</td>';
-                        echo '<td>'.$end.'</td>';
                         echo '</tr>';
                       $row = mysqli_fetch_assoc($result);
                     }while ($row);

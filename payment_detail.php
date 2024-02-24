@@ -85,8 +85,7 @@ if (!($_SESSION['username'] == "Admin")) {
         <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php
                                                                   $uname = $_SESSION['username'];
                                                                   echo "<b><b>" . $uname . "</b></b>";
-
-                                                                  ?></span>
+                                                                   ?></span>
         <img class="img-profile rounded-circle" src="user.png">
       </a>
       <!-- Dropdown - User Information -->
@@ -133,6 +132,8 @@ if (!($_SESSION['username'] == "Admin")) {
                 <th style="display:none">4</th>
                 <th style="display:none">5</th>
                 <th style="font-size:15px;">Status</th> -->
+                
+                
                 <th style="font-size:15px;">Name</th>
                 <th style="font-size:15px;">Description</th>
                 <th style="font-size:15px;">Previous Reading</th>
@@ -151,6 +152,7 @@ if (!($_SESSION['username'] == "Admin")) {
                 <th style="display:none">4</th>
                 <th style="display:none">5</th>
                 <th style="font-size:15px;">Status</th>
+                
                 <th></th>
               </tr>
             </thead>

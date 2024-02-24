@@ -95,8 +95,8 @@ if(!$_SESSION['username']){
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-          <h1 class="h3 mb-2 text-gray-800" align="center">Your Contract</h1>
+       <div class="container-fluid">
+          <h1 class="h3 mb-2 text-gray-800" align="center">Agreement</h1>
 
           <div class="card shadow mb-4">
             <div class="card-body">
@@ -156,43 +156,21 @@ if(!$_SESSION['username']){
                           echo "<td style = 'color:blue;'>".number_format($amount)."</td>";
                           echo '<tr>';
 
+                
+                        
                           echo '<tr>';
-                          echo "<td>Duration of Occupying the Room (months):</td>";
-                          echo "<td style = 'color:blue;'>".$row['duration_month']."</td>";
-                          echo '<tr>';
-
-                          echo '<tr>';
-                          echo "<td>Total Rent (php):</td>";
-                          echo "<td style = 'color:blue;'>".number_format($row['total_rent'])."</td>";
-                          echo '<tr>';
-
-                          echo '<tr>';
-                          echo "<td>Terms of Payment:</td>";
-                          echo "<td style = 'color:blue;'>".$row['terms']."</td>";
-                          echo '<tr>';
-
-                          echo '<tr>';
-                          echo "<td>Total Rent per Term (php):</td>";
-                          echo "<td style = 'color:blue;'>".number_format($row['rent_per_term'])."</td>";
-                          echo '<tr>';
-
-                          echo '<tr>';
-                          echo "<td>Contract begins on:</td>";
+                          echo "<td>Date start on:</td>";
                           echo "<td style = 'color:blue;'>".$row['start_day']."</td>";
                           echo '<tr>';
 
-                          echo '<tr>';
-                          echo "<td>Contract ends on:</td>";
-                          echo "<td style = 'color:blue;'>".$row['end_day']."</td>";
-                          echo '<tr>';
 
                           echo '<tr>';
-                          echo "<td>Date of signing the Contract:</td>";
+                          echo "<td>Date of Agreement:</td>";
                           echo "<td style = 'color:blue;'>".$row['date_contract_sign']."</td>";
                           echo '<tr>';
 
                           echo '<tr>';
-                          echo "<td>Status of the Contract:</td>";
+                          echo "<td>Status of the Agreement:</td>";
                           echo "<td style = 'color:blue;'>".$row['status']."</td>";
                           echo '<tr>';
 
@@ -237,43 +215,20 @@ if(!$_SESSION['username']){
                           echo "<td style = 'color:blue;'>".$amount."</td>";
                           echo '<tr>';
 
-                          echo '<tr>';
-                          echo "<td>Duration of Occupying the Room (months):</td>";
-                          echo "<td style = 'color:blue;'>".$row['duration_month']."</td>";
-                          echo '<tr>';
 
                           echo '<tr>';
-                          echo "<td>Total Rent (php):</td>";
-                          echo "<td style = 'color:blue;'>".$row['total_rent']."</td>";
-                          echo '<tr>';
-
-                          echo '<tr>';
-                          echo "<td>Terms of Payment:</td>";
-                          echo "<td style = 'color:blue;'>".$row['terms']."</td>";
-                          echo '<tr>';
-
-                          echo '<tr>';
-                          echo "<td>Total Rent per Term (php):</td>";
-                          echo "<td style = 'color:blue;'>".$row['rent_per_term']."</td>";
-                          echo '<tr>';
-
-                          echo '<tr>';
-                          echo "<td>Contract begins on:</td>";
+                          echo "<td>Date Start on:</td>";
                           echo "<td style = 'color:blue;'>".$row['start_day']."</td>";
                           echo '<tr>';
 
-                          echo '<tr>';
-                          echo "<td>Contract ends on:</td>";
-                          echo "<td style = 'color:blue;'>".$row['end_day']."</td>";
-                          echo '<tr>';
 
                           echo '<tr>';
-                          echo "<td>Date of signing the Contract:</td>";
+                          echo "<td>Date of Agreement:</td>";
                           echo "<td style = 'color:blue;'>".$row['date_contract_sign']."</td>";
                           echo '<tr>';
 
                           echo '<tr>';
-                          echo "<td>Status of the Contract:</td>";
+                          echo "<td>Status of the Agreement:</td>";
                           echo "<td style = 'color:blue;'>".$row['status']."</td>";
                           echo '<tr>';
 

@@ -195,8 +195,8 @@ if(!$user && $role == 'Manager'){
                       <th>Name</th>
                       <th>Description</th>
                       <th>Amount Paid (php)</th>
-                      <th>From</th>
-                      <th>To</th>
+                      <th>Prev. Reading</th>
+                      <th>Current Reading</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -102,7 +102,7 @@ if(!$_SESSION['username']){
                 <table class="table table-borderless" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Contact #1</th>
+                      <th>Contact</th>
 
                     </tr>
                   </thead>
@@ -132,12 +132,12 @@ if(!$_SESSION['username']){
                       echo '<tr>';
 
                       echo '<tr>';
-                      echo "<td>Nature of the Relationship:</td>";
+                      echo "<td>Relationship:</td>";
                       echo "<td style = 'color:blue;'>".$row['nature1']."</td>";
                       echo '<tr>';
 
                       echo '<tr>';
-                      echo "<td>Phone Number 1:</td>";
+                      echo "<td>Phone Number :</td>";
                       echo "<td style = 'color:blue;'>".$row['pno1']."</td>";
                       echo '<tr>';
                       if($row['pno2'] == ''){
@@ -151,20 +151,12 @@ if(!$_SESSION['username']){
                       echo "<td style = 'color:blue;'>".$row['e_address1']."</td>";
                       echo '<tr>';
 
-                      echo '<tr>';
-                      echo "<td>Postal Address:</td>";
-                      echo "<td style = 'color:blue;'>".$row['p_address1']."</td>";
-                      echo '<tr>';
 
                       echo '<tr>';
                       echo "<td>City</td>";
                       echo "<td style = 'color:blue;'>".$row['city1']."</td>";
                       echo '<tr>';
 
-                      echo '<tr>';
-                      echo "<td>Region</td>";
-                      echo "<td style = 'color:blue;'>".$row['region1']."</td>";
-                      echo '<tr>';
 
                       echo '<tr>';
                       echo "<td></td>";
@@ -212,12 +204,11 @@ if(!$_SESSION['username']){
                      <option value = 'fname1' >First Name</option>
                      <option value = 'lname1'>Last Name</option>
                      <option value = 'occupation1'>Occupation</option>
-                     <option value = 'nature1'>Nature of the Relationship</option>
-                     <option value = 'pno1'>Phone Number 1 e.g; 0922*******</option>
+                     <option value = 'nature1'>Relationship</option>
+                     <option value = 'pno1'>Phone Number e.g; 0922*******</option>
                      <option value = 'e_address1'>Email Address</option>
-                     <option value = 'p_address1'>Postal Address</option>
                      <option value = 'city1'>City</option>
-                     <option value = 'region1'>Region</option>
+                   
                      
                    </select></td>
                      <td><input type='text' class='form-control form-control-user' name='edit'></td>

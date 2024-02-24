@@ -183,7 +183,7 @@ if(!($_SESSION['username'] == "Admin")){
            </td>
            <td>
      <select class="custom-select form-control  form-control-user">
-       <option><?php echo $row['rent_per_month']; ?></option>
+       <option>..........</option>
          <option>Empty</option>
            <option><?php echo $row['rent_per_month']; ?></option>
 

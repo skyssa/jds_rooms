@@ -202,7 +202,7 @@ if (!$user && $role == 'Caretaker') {
 											<th style="font-size:15px;">Description</th>
 											<th style="font-size:15px;">Previous Reading</th>
 											<th style="font-size:15px;">Current Reading</th>
-											<th style="font-size:15px;">Electric bill</th>
+											<th style="font-size:15px;">TOTAL of Electric bill</th>
 											<th style="font-size:15px;">Water Bill</th>
 											<th style="font-size:15px;">Room Rent</th>
 											<th style="font-size:15px;">Total</th>

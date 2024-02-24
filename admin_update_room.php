@@ -12,9 +12,10 @@ if($image==''){
     $id = $_POST['id'];
     $room_name=$_POST['room_name'];
     $description=$_POST['description'];
+    $status = $_POST['status'];
     $cost=$_POST['cost'];
     $images=$_POST['image'];
-    $sql = "UPDATE room  SET   room_name='$room_name',description='$description',rent_per_month='$cost',compartment='$compartment',imagepath='$images' WHERE room_id = '$id'";
+    $sql = "UPDATE room  SET   room_name='$room_name', status='$status' ,description='$description',rent_per_month='$cost',compartment='$compartment',imagepath='$images' WHERE room_id = '$id'";
     mysqli_query($con, $sql);
     mysqli_close($con);
 

@@ -182,10 +182,9 @@ if(!($_SESSION['username'] == "Admin")){
              Status:
            </td>
            <td>
-     <select class="custom-select form-control  form-control-user">
-       <option>..........</option>
-         <option>Empty</option>
-           <option><?php echo $row['rent_per_month']; ?></option>
+     <select class="custom-select form-control  form-control-user" name="status">
+         <option value="<?php echo  @$_GET['status']; ?>">Occupied</option>
+         <option value="Available">Available</option>
 
      </select>
           </td>

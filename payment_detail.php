@@ -710,16 +710,20 @@ if (!($_SESSION['username'] == "Admin")) {
     });
 
     $("body").on("click", '#viewopen', function() {
-      $('form')[0].reset();
-      var tr = $(this).closest("tr").find('td');
-      var pic = "<?php echo $pic; ?>";
-      $('#getimage').html('<img src="img/' + pic + '"  style="width:100%;height:500px;"/>');
-      $('#sender').text(tr.eq(8).text());
-      $('#ref').text(tr.eq(9).text());
-      $('#dateissue').text(tr.eq(11).text());
-      $('#confirmed').text(tr.eq(12).text());
-      $('#viewing').show();
-    });
+    $('form')[0].reset();
+    var tr = $(this).closest("tr").find('td');
+    var pic = "<?php echo $pic; ?>";
+    var refs = "<?php echo $ref;?>";
+    // Display the value of refs
+    console.log(refs);
+    $('#getimage').html('<img src="img/' + pic + '"  style="width:100%;height:500px;"/>');
+    $('#sender').text(tr.eq(11).text());
+    $('#ref').text(tr.eq().text());
+    $('#dateissue').text(tr.eq(8).text());
+    $('#confirmed').text(tr.eq(9).text());
+    $('#viewing').show();
+});
+
 
     $("body").on("click", '.closeviewing', function() {
 

@@ -24,10 +24,10 @@ if (isset($_POST["submit"])) {
     $rpword = check($_POST['repeatPassword']);
     $profile_image = check($_POST['profile_image']);
 
-    $filename = $_FILES['productimage']['name'];
+    $filename = $_FILES['profile_image']['name'];
     $folder = 'img/';
     $destination = $folder . $filename;
-    move_uploaded_file($_FILES['productimage']['tmp_name'],$destination);
+    move_uploaded_file($_FILES['profile_image']['tmp_name'],$destination);
 
 
 

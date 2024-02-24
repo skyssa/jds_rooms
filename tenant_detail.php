@@ -98,8 +98,6 @@ if(!$_SESSION['username']){
                     <tr>
                       <th>Identification Card</th>
                       <th>Name</th>
-                      <th>Programme</th>
-                      <th>ID Number</th>
                       <th>Occupation</th>
                       <th>Phone # 1</th>
                       <th>Phone # 2</th>
@@ -123,13 +121,13 @@ if(!$_SESSION['username']){
                       $lname = $row['lname'];
                       $uname = $row['u_name'];
                       $prog = $row['programme'];
-                      if($row['programme'] == ''){
-                        $prog = '-';
-                      }
-                      $reg = $row['reg_no'];
-                      if($row['reg_no'] == ''){
-                         $reg = '-';
-                      }
+                      // if($row['programme'] == ''){
+                      //   $prog = '-';
+                      // }
+                      // $reg = $row['reg_no'];
+                      // if($row['reg_no'] == ''){
+                      //    $reg = '-';
+                      // }
                       $occ = $row['occupation'];
                       if($row['occupation'] == ''){
                          $occ = '-';
@@ -146,8 +144,9 @@ if(!$_SESSION['username']){
                         echo '<tr>';
                         echo '<td><img src="img/'.$profile_image.'" style="width:100%;height:100px;"></td>';
                         echo '<td>'.$fname.' '.$lname.'<br/>('.$uname.')</td>';
-                        echo '<td>'.$prog.'</td>';
-                        echo '<td>'.$reg.'</td>';
+                        // echo '<td>'.$prog.'</td>';
+                        // echo '<td>'.$reg.'</td>';
+
                         echo '<td>'.$occ.'</td>';
                         echo '<td>'.$pno1.'</td>';
                         echo '<td>'.$pno2.'</td>';
@@ -163,8 +162,8 @@ if(!$_SESSION['username']){
                         echo '<tr>';
                         echo '<td><img src="img/'.$profile_image.'" style="width:100%;height:100px;"></td>';
                         echo '<td>'.$fname.' '.$lname.'<br/>('.$uname.')</td>';
-                        echo '<td>'.$prog.'</td>';
-                        echo '<td>'.$reg.'</td>';
+                        // echo '<td>'.$prog.'</td>';
+                        // echo '<td>'.$reg.'</td>';
                         echo '<td>'.$occ.'</td>';
                         echo '<td>'.$pno1.'</td>';
                         echo '<td>'.$pno2.'</td>';
@@ -181,8 +180,8 @@ if(!$_SESSION['username']){
                         echo '<tr>';
                         echo '<td><img src="img/'.$profile_image.'" style="width:100%;height:100px;"></td>';
                         echo '<td>'.$fname.' '.$lname.'<br/>('.$uname.')</td>';
-                        echo '<td>'.$prog.'</td>';
-                        echo '<td>'.$reg.'</td>';
+                        // echo '<td>'.$prog.'</td>';
+                        // echo '<td>'.$reg.'</td>';
                         echo '<td>'.$occ.'</td>';
                         echo '<td>'.$pno1.'</td>';
                         echo '<td>'.$pno2.'</td>';
@@ -200,8 +199,8 @@ if(!$_SESSION['username']){
                         echo '<tr>';
                         echo '<td><img src="img/'.$profile_image.'" style="width:100%;height:100px;"></td>';
                         echo '<td>'.$fname.' '.$lname.'<br/>('.$uname.')</td>';
-                        echo '<td>'.$prog.'</td>';
-                        echo '<td>'.$reg.'</td>';
+                        // echo '<td>'.$prog.'</td>';
+                        // echo '<td>'.$reg.'</td>';
                         echo '<td>'.$occ.'</td>';
                         echo '<td>'.$pno1.'</td>';
                         echo '<td>'.$pno2.'</td>';

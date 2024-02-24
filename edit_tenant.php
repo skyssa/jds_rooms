@@ -134,7 +134,7 @@ if (!($_SESSION['username'] == "Admin")) {
             if (isset($_POST["submit"])) {
               $id = $_POST['id'];
               $stat = $_POST["stat"];
-
+              $roomnum = $_POST['roomnum'];
 
               if ($stat === 'Deactivate') {
 
@@ -147,7 +147,7 @@ if (!($_SESSION['username'] == "Admin")) {
                 }
               } else {
 
-                $sql1 = "UPDATE tenant SET status= '$stat' WHERE tenant_id = '$id'";
+                $sql1 = "UPDATE tenant SET status= '$stat', reg_no = '$roomnum' WHERE tenant_id = '$id'";
                 if (mysqli_query($con, $sql1)) {
                   echo "<script type='text/javascript'>alert('Updated Successfully!!!');</script>";
                   echo '<style>body{display:none;}</style>';

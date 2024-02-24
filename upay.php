@@ -183,6 +183,7 @@ if (!$_SESSION['username']) {
                     $row3 = mysqli_fetch_assoc($result3);
                     $total = 0;
                     do {
+                      $isFirstOuterIteration = true;
                       do {
                         $cid = $row3['contract_id'];
                         $id = $row['payment_id'];
